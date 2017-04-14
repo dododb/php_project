@@ -11,6 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('Accueil', function () {
+    return view('Accueil');
 });
+
+Route::get('/{idObject}/Gallerie/{idPhoto}', function ($idObject, $idPhoto) {
+
+    return view('PhotoGalerie')->with('idPhoto', $idPhoto);
+})->where('idPhoto', '[0-9]+');
+
+Route::get('/{idObject}/Gallerie', function ($idObject) {
+    return view('Gallerie')->with('idObject', $idObject);
+});
+
+/*
+Route::get('/Gallerie/{id}', array {
+'uses'=>
+});
+*/
