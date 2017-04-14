@@ -11,21 +11,24 @@
 |
 */
 
-Route::get('Accueil', function () {
+Route::get('accueil', function () {
     return view('Accueil');
 });
 
-Route::get('/{idObject}/Gallerie/{idPhoto}', function ($idObject, $idPhoto) {
+Route::get('/{idObject}/gallerie/{idPhoto}', function ($idObject, $idPhoto) {
 
-    return view('PhotoGalerie')->with('idPhoto', $idPhoto);
-})->where('idPhoto', '[0-9]+');
+    return view('Photogalerie')->with('idPhoto', $idPhoto);
+})->where('idPhoto', '[0-9]+')->where('idPhoto', '[0]+');
 
-Route::get('/{idObject}/Gallerie', function ($idObject) {
+Route::get('/{idObject}/gallerie', function ($idObject) {
     return view('Gallerie')->with('idObject', $idObject);
 });
 
+Route::get('/', function () {
+    Redirect::to('Accueil');
+});
 /*
 Route::get('/Gallerie/{id}', array {
-'uses'=>
+'uses'=>return ;
 });
 */
