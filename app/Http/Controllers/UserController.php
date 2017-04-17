@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Role;
@@ -17,6 +18,26 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['only' => [
+            'getDashboard',
+            'getLogout',
+        ]]);
+
+        $this->middleware('guest', ['except' => [
+            'getDashboard',
+            'getLogout',
+        ]]);
+    }
+
+    public function getLogout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
+    }
 
     public function index(Request $request)
     {

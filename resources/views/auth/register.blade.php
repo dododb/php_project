@@ -74,6 +74,13 @@
                             </div>
                         </div>
 
+                        <div class="radio">
+                            <label><input type="radio" name="cesi" value="EI">EI</label>
+                        </div>
+                        <div class="radio">
+                            <label><input type="radio" name="cesi" value="Exia">Exia</label>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

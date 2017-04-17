@@ -27,7 +27,7 @@
         @foreach ($data as $key => $user)
             <tr>
                 <td>{{ ++$i }}</td>
-                <td>{{ $user->name }}</td>
+                <td>{{ $user->nom }}</td>
                 <td>{{ $user->email }}</td>
                 <td>
                     @if(!empty($user->roles))

@@ -23,7 +23,11 @@ Route::get('/{idObject}/Gallerie/{idPhoto}', function ($idObject, $idPhoto) {
 Route::get('/{idObject}/Gallerie', function ($idObject) {
     return view('Gallerie')->with('idObject', $idObject);
 });
-
+Route::get('/logout', [
+    'uses' => 'UserController@getLogout',
+    'as' => 'logout',
+    'middleware' => 'auth'
+]);
 /*
 Route::get('/Gallerie/{id}', array {
 'uses'=>
