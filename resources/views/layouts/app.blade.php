@@ -1,29 +1,37 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laravel</title>
+    <meta charset="UTF-8">
+    <title>List Demo</title>
+    <link rel="stylesheet" type="text/css" href="css/desktop.css">
+    <script type="text/javascript" src="js/animations.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" crossorigin="anonymous">
 </head>
 <body id="app-layout">
+<header>
+    <div class="band1">
+        <h1>BDE CESI BORDEAUX</h1>
+    </div>
+
+    <!-- ************************************ -->
+
+    <div class="band2">
+        <ul class="mainMenu">
+            <li><a href="{{ url('/Accueil') }}">Accueil</a></li>
+            <li><a href="{{ url('/Activitées') }}">Activitées</a></li>
+            <li><a href="{{ url('/Boutiques') }}">Boutiques</a></li>
+        </ul>
+    </div>
+
+    <!-- ************************************ -->
+</header>
 <nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-        <div class="navbar-header">
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
-                Laravel
-            </a>
-        </div>
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">

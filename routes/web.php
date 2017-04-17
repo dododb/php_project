@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('Accueil', function () {
+Route::get('/Accueil', function () {
     return view('Accueil');
 });
 
@@ -29,6 +29,10 @@ Route::get('/Gallerie/{id}', array {
 'uses'=>
 });
 */
+/*  Route::get('/Accueil', function () {
+    // Validate the request...
+    return redirect('/accueil');
+});*/
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
@@ -49,4 +53,4 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RoleController@destroy','middleware' => ['permission:role-delete']]);
 
 
-});
+}); 
