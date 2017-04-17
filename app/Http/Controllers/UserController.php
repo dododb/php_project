@@ -17,10 +17,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function get()
-    {
-        echo 'lala';
-    }
+
     public function index(Request $request)
     {
         $data = User::orderBy('id','DESC')->paginate(5);
@@ -47,7 +44,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //echo 'caca';
         $this->validate($request, [
             'nom' => 'required',
             'prenom' => 'required',
