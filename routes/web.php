@@ -54,7 +54,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('roles/{id}',['as'=>'roles.show','uses'=>'RoleController@show']);
     Route::get('roles/{id}/edit',['as'=>'roles.edit','uses'=>'RoleController@edit','middleware' => ['permission:role-edit']]);
     Route::patch('roles/{id}',['as'=>'roles.update','uses'=>'RoleController@update','middleware' => ['permission:role-edit']]);
-    Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RoleController@destroy','middleware' => ['permission:role-delete']]);
+    Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RoleControl  ler@destroy','middleware' => ['permission:role-delete']]);
 
 
 }); 
