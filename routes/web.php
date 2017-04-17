@@ -28,6 +28,11 @@ Route::get('/logout', [
     'as' => 'logout',
     'middleware' => 'auth'
 ]);
+
+
+Route::get('mentions-legales', function () {
+    return view('mentionLegal');
+});
 /*
 Route::get('/Gallerie/{id}', array {
 'uses'=>
