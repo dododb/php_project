@@ -33,6 +33,10 @@ Route::get('/logout', [
 Route::get('mentions-legales', function () {
     return view('mentionLegal');
 });
+
+Route::get('/', function () {
+    return redirect('/Accueil');
+});
 /*
 Route::get('/Gallerie/{id}', array {
 'uses'=>
