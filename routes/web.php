@@ -11,18 +11,6 @@
 |
 */
 
-Route::get('/Accueil', function () {
-    return view('Accueil');
-});
-
-Route::get('/{idObject}/Gallerie/{idPhoto}', function ($idObject, $idPhoto) {
-
-    return view('PhotoGalerie')->with('idPhoto', $idPhoto);
-})->where('idPhoto', '[0-9]+');
-
-Route::get('/{idObject}/Gallerie', function ($idObject) {
-    return view('Gallerie')->with('idObject', $idObject);
-});
 Route::get('/logout', [
     'uses' => 'UserController@getLogout',
     'as' => 'logout',
@@ -30,14 +18,26 @@ Route::get('/logout', [
 ]);
 
 
+
+
+
+
+
+
+
+Route::get('{type}', 'ListeController@getListe')->where('type', 'activite|boutique');
+Route::get('boutique/{idObject}', 'ProduitController@getProduit')->where('idObject', '[0-9]+');
+Route::get('boutique/{idObject}/delete', 'ProduitController@deleteProduit')->where('idObject', '[0-9]+');
+
+Route::get('activite/{idObject}', 'ActiviteController@getActivite')->where('idObject', '[0-9]+');
+Route::get('{type}/{idObject}/galerie', 'GalerieController@getGalerie')->where('type', 'activite|boutique')->where('idObject', '[0-9]+');
+Route::get('{type}/{idObject}/galerie/{idPhoto}', 'PhotoGalerieController@getPhoto')->where('type', 'activite|boutique')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
+
+
 Route::get('mentions-legales', function () {
     return view('mentionLegal');
 });
 
-Route::get('/', function () {
-    return redirect('/Accueil');
-});
-route::post('/regis', 'UserController@store');
 /*
 Route::get('/Gallerie/{id}', array {
 'uses'=>

@@ -59,11 +59,11 @@ class Produit extends Racine
 
         echo '</p></div>';
 
-        $this->admin();
+        //$this->admin();
     }
 
     private function admin()
     {
-        echo '<a href=""><div class="galleriProduit">Supprimer annonce </div></a>';
+        echo '<a href="' . $this->_idObject . '/delete"><div class="galleriProduit">Supprimer annonce </div></a>';
     }
 }
