@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>List Demo</title>
-    <link rel="stylesheet" type="text/css" href="/php_project/public/css/desktop.css">
+    <link rel="stylesheet" type="text/css" href="/php_project/public/css/desktopFinalExia.php">
     <script type="text/javascript" src="/php_project/public/js/animations.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-
+    @if (Auth::guest())
+        <li><a href="{{ url('/login') }}">Login</a></li>
+        <li><a href="{{ url('/register') }}">Register</a></li>
+    @else
+        @if(Auth::user()->cesi == 'EI')
+            <link rel="stylesheet" type="text/css" href="/php_project/public/css/desktopFinalEI.php">
+        @endif
+    @endif
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
@@ -22,9 +29,9 @@
 
     <div class="band2">
         <ul class="mainMenu">
-            <li><a href="{{ url('/Accueil') }}">Accueil</a></li>
-            <li><a href="{{ url('/Activitées') }}">Activitées</a></li>
-            <li><a href="{{ url('/Boutiques') }}">Boutiques</a></li>
+            <li><a href="{{ url('/accueil') }}">Accueil</a></li>
+            <li><a href="{{ url('/activite') }}">Activitées</a></li>
+            <li><a href="{{ url('/boutiques') }}">Boutiques</a></li>
             @if (Auth::guest())
                 <li><a href="{{ url('/login') }}">Login</a></li>
                 <li><a href="{{ url('/register') }}">Register</a></li>

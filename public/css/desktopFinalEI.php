@@ -10,14 +10,12 @@
     ob_start('ob_gzhandler');
     header('Cache-Control:max-age=31536000, must-revalidate');
 
-    $RougeFonce = '#932529';
-    $RougeClair = '#c2242a';
-
     $BleuFonce = '#004975';
     $BleuClair = '#1b6dab';
 
     $Fonce =  $BleuFonce;
     $Clair = $BleuClair;
+
 ?>
 
 html

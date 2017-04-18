@@ -11,18 +11,6 @@
 |
 */
 
-Route::get('/Accueil', function () {
-    return view('Accueil');
-});
-
-Route::get('/{idObject}/Gallerie/{idPhoto}', function ($idObject, $idPhoto) {
-
-    return view('PhotoGalerie')->with('idPhoto', $idPhoto);
-})->where('idPhoto', '[0-9]+');
-
-Route::get('/{idObject}/Gallerie', function ($idObject) {
-    return view('Gallerie')->with('idObject', $idObject);
-});
 Route::get('/logout', [
     'uses' => 'UserController@getLogout',
     'as' => 'logout',
@@ -53,9 +41,6 @@ Route::get('mentions-legales', function () {
     return view('mentionLegal');
 });
 
-Route::get('/', function () {
-    return redirect('/Accueil');
-});
 /*
 Route::get('/Gallerie/{id}', array {
 'uses'=>
