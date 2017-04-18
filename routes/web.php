@@ -66,4 +66,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RoleControl  ler@destroy','middleware' => ['permission:role-delete']]);
 
 
-}); 
+});
+Route::get('imageUploadForm', 'ImageController@upload' );
+Route::post('imageUploadForm', 'ImageController@store' );
+Route::get('showLists', 'ImageController@show' );
