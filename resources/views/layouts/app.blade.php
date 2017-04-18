@@ -6,10 +6,7 @@
     <link rel="stylesheet" type="text/css" href="/php_project/public/css/desktopFinalExia.php">
     <script type="text/javascript" src="/php_project/public/js/animations.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-    @if (Auth::guest())
-        <li><a href="{{ url('/login') }}">Login</a></li>
-        <li><a href="{{ url('/register') }}">Register</a></li>
-    @else
+    @if (!Auth::guest())
         @if(Auth::user()->cesi == 'EI')
             <link rel="stylesheet" type="text/css" href="/php_project/public/css/desktopFinalEI.php">
         @endif
