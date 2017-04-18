@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\avatar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -9,6 +10,10 @@ use App\User;
 use App\Role;
 use DB;
 use Hash;
+use App\Http\Requests;
+use Carbon\Carbon;
+use Guzzle\Tests\Plugin\Redirect;
+use Illuminate\Support\Facades\Input;
 
 class UserController extends Controller
 {
@@ -32,6 +37,8 @@ class UserController extends Controller
             'getLogout',
         ]]);
     }
+
+
 
     public function getLogout()
     {
@@ -68,10 +75,12 @@ class UserController extends Controller
         $this->validate($request, [
             'nom' => 'required',
             'prenom' => 'required',
+            'avatar' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
             'roles' => 'required'
         ]);
+
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
@@ -83,6 +92,12 @@ class UserController extends Controller
 
         return redirect()->route('users.index')
             ->with('success','User created successfully');
+
+
+
+
+
+
     }
 
     /**
@@ -95,6 +110,9 @@ class UserController extends Controller
     {
         $user = User::find($id);
         return view('users.show',compact('user'));
+
+
+
     }
 
     /**
@@ -122,12 +140,13 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required',
+            'nom' => 'required',
+            'prenom' => 'required',
+            'avatar' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm-password',
             'roles' => 'required'
         ]);
-
         $input = $request->all();
         if(!empty($input['password'])){
             $input['password'] = Hash::make($input['password']);
