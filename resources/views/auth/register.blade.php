@@ -82,12 +82,14 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
+                            {!! Form::label('avatar', 'Choisissez votre avatar') !!}
+                            {!! Form::file('avatar') !!}
                         </div>
+
+                        <div class="form-group">
+                            {!! Form::submit('register', array( 'class'=>'btn btn-danger form-control' )) !!}
+                        </div>
+
                     </form>
                 </div>
             </div>

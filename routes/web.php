@@ -11,6 +11,18 @@
 |
 */
 
+Route::get('/Accueil', function () {
+    return view('Accueil');
+});
+
+Route::get('/{idObject}/Gallerie/{idPhoto}', function ($idObject, $idPhoto) {
+
+    return view('PhotoGalerie')->with('idPhoto', $idPhoto);
+})->where('idPhoto', '[0-9]+');
+
+Route::get('/{idObject}/Gallerie', function ($idObject) {
+    return view('Gallerie')->with('idObject', $idObject);
+});
 Route::get('/logout', [
     'uses' => 'UserController@getLogout',
     'as' => 'logout',
@@ -18,29 +30,14 @@ Route::get('/logout', [
 ]);
 
 
-
-
-
-
-
-
-
-Route::get('{type}', 'ListeController@getListe')->where('type', 'activite|boutique');
-
-Route::get('boutique/{idObject}', 'ProduitController@getProduit')->where('idObject', '[0-9]+');
-
-Route::get('activite/{idObject}', 'ActiviteController@getActivite')->where('idObject', '[0-9]+');
-
-
-Route::get('{type}/{idObject}/galerie', 'GalerieController@getGalerie')->where('type', 'activite|boutique')->where('idObject', '[0-9]+');
-
-Route::get('{type}/{idObject}/galerie/{idPhoto}', 'PhotoGalerieController@getPhoto')->where('type', 'activite|boutique')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
-
-
 Route::get('mentions-legales', function () {
     return view('mentionLegal');
 });
 
+Route::get('/', function () {
+    return redirect('/Accueil');
+});
+route::post('/regis', 'UserController@store');
 /*
 Route::get('/Gallerie/{id}', array {
 'uses'=>
@@ -61,13 +58,13 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::resource('users','UserController');
 
-    Route::get('roles',['as'=>'roles.index','uses'=>'RoleController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
+   /* Route::get('roles',['as'=>'roles.index','uses'=>'RoleController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
     Route::get('roles/create',['as'=>'roles.create','uses'=>'RoleController@create','middleware' => ['permission:role-create']]);
     Route::post('roles/create',['as'=>'roles.store','uses'=>'RoleController@store','middleware' => ['permission:role-create']]);
     Route::get('roles/{id}',['as'=>'roles.show','uses'=>'RoleController@show']);
     Route::get('roles/{id}/edit',['as'=>'roles.edit','uses'=>'RoleController@edit','middleware' => ['permission:role-edit']]);
     Route::patch('roles/{id}',['as'=>'roles.update','uses'=>'RoleController@update','middleware' => ['permission:role-edit']]);
-    Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RoleControl  ler@destroy','middleware' => ['permission:role-delete']]);
+    Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RoleControl  ler@destroy','middleware' => ['permission:role-delete']]);*/
 
 
 });
