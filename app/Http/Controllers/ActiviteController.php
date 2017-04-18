@@ -14,6 +14,8 @@ class ActiviteController extends Controller
 
         $act = new Activite($object);
 
+
+
         return view('Index', ['object' => $act]);
     }
 }

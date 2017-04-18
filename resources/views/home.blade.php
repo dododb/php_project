@@ -10,6 +10,9 @@
                 <div class="panel-body">
                     You are logged in!
                 </div>
+                <div style="width: 500px; height: 500px;">
+                    {!! Mapper::render() !!}
+                </div>
             </div>
         </div>
     </div>

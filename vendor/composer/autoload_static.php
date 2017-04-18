@@ -13,9 +13,9 @@ class ComposerStaticInit864ae6eeb4ed7cb761f1ae83d84811e1
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
-        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -23,11 +23,11 @@ class ComposerStaticInit864ae6eeb4ed7cb761f1ae83d84811e1
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
-        'Z' =>
+        'Z' => 
         array (
             'Zizaco\\Entrust\\' => 15,
         ),
-        'X' =>
+        'X' => 
         array (
             'XdgBaseDir\\' => 11,
         ),
@@ -108,11 +108,11 @@ class ComposerStaticInit864ae6eeb4ed7cb761f1ae83d84811e1
             1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
         ),
-        'Zizaco\\Entrust\\' =>
+        'Zizaco\\Entrust\\' => 
         array (
             0 => __DIR__ . '/..' . '/zizaco/entrust/src/Entrust',
         ),
-        'XdgBaseDir\\' =>
+        'XdgBaseDir\\' => 
         array (
             0 => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src',
         ),
@@ -232,11 +232,11 @@ class ComposerStaticInit864ae6eeb4ed7cb761f1ae83d84811e1
         array (
             0 => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron',
         ),
-        'Collective\\Html\\' =>
+        'Collective\\Html\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravelcollective/html/src',
         ),
-        'Carbon\\' =>
+        'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
@@ -283,18 +283,30 @@ class ComposerStaticInit864ae6eeb4ed7cb761f1ae83d84811e1
                 0 => __DIR__ . '/..' . '/doctrine/inflector/lib',
             ),
         ),
+        'C' => 
+        array (
+            'Cornford\\Googlmapper' => 
+            array (
+                0 => __DIR__ . '/..' . '/cornford/googlmapper/src',
+            ),
+        ),
     );
 
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\ActiviteController' => __DIR__ . '/../..' . '/app/Http/Controllers/ActiviteController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
-        'App\\Http\\Controllers\\PhotoGalerieController' => __DIR__ . '/../..' . '/app/Http/Controllers/PhotoGalerieController.php',
+        'App\\Http\\Controllers\\GalerieController' => __DIR__ . '/../..' . '/app/Http/Controllers/GalerieController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\ImageController' => __DIR__ . '/../..' . '/app/Http/Controllers/ImageController.php',
+        'App\\Http\\Controllers\\ListeController' => __DIR__ . '/../..' . '/app/Http/Controllers/ListeController.php',
+        'App\\Http\\Controllers\\PhotoGalerieController' => __DIR__ . '/../..' . '/app/Http/Controllers/PhotoGalerieController.php',
+        'App\\Http\\Controllers\\ProduitController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProduitController.php',
         'App\\Http\\Controllers\\RoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/RoleController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -302,6 +314,7 @@ class ComposerStaticInit864ae6eeb4ed7cb761f1ae83d84811e1
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Image' => __DIR__ . '/../..' . '/app/Image.php',
         'App\\Item' => __DIR__ . '/../..' . '/app/Item.php',
         'App\\Permission' => __DIR__ . '/../..' . '/app/Permission.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
@@ -311,6 +324,18 @@ class ComposerStaticInit864ae6eeb4ed7cb761f1ae83d84811e1
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Role' => __DIR__ . '/../..' . '/app/Role.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\modele\\Activite' => __DIR__ . '/../..' . '/app/modele/Activite.php',
+        'App\\modele\\CommentaireUser' => __DIR__ . '/../..' . '/app/modele/ImageGalerie/CommentaireUser.php',
+        'App\\modele\\Commentaires' => __DIR__ . '/../..' . '/app/modele/ImageGalerie/Commentaires.php',
+        'App\\modele\\ElementListe' => __DIR__ . '/../..' . '/app/modele/Liste/ElementListe.php',
+        'App\\modele\\Galerie' => __DIR__ . '/../..' . '/app/modele/Galerie.php',
+        'App\\modele\\ImageGalerie' => __DIR__ . '/../..' . '/app/modele/ImageGalerie.php',
+        'App\\modele\\LikeBarre' => __DIR__ . '/../..' . '/app/modele/ImageGalerie/LikeBarre.php',
+        'App\\modele\\LineImage' => __DIR__ . '/../..' . '/app/modele/Galerie/LineImage.php',
+        'App\\modele\\Liste' => __DIR__ . '/../..' . '/app/modele/Liste.php',
+        'App\\modele\\NavigationBarre' => __DIR__ . '/../..' . '/app/modele/ImageGalerie/NavigationBarre.php',
+        'App\\modele\\Produit' => __DIR__ . '/../..' . '/app/modele/Produit.php',
+        'App\\modele\\Racine' => __DIR__ . '/../..' . '/app/modele/Racine.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
@@ -321,6 +346,29 @@ class ComposerStaticInit864ae6eeb4ed7cb761f1ae83d84811e1
         'Collective\\Html\\HtmlBuilder' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlBuilder.php',
         'Collective\\Html\\HtmlFacade' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlFacade.php',
         'Collective\\Html\\HtmlServiceProvider' => __DIR__ . '/..' . '/laravelcollective/html/src/HtmlServiceProvider.php',
+        'Cornford\\Googlmapper\\Contracts\\MappingBaseInterface' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Contracts/MappingBaseInterface.php',
+        'Cornford\\Googlmapper\\Contracts\\MappingInterface' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Contracts/MappingInterface.php',
+        'Cornford\\Googlmapper\\Contracts\\ModelingInterface' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Contracts/ModelingInterface.php',
+        'Cornford\\Googlmapper\\Contracts\\ObjectableInterface' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Contracts/ObjectableInterface.php',
+        'Cornford\\Googlmapper\\Exceptions\\MapperArgumentException' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Exceptions/MapperArgumentException.php',
+        'Cornford\\Googlmapper\\Exceptions\\MapperException' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Exceptions/MapperException.php',
+        'Cornford\\Googlmapper\\Exceptions\\MapperSearchException' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Exceptions/MapperSearchException.php',
+        'Cornford\\Googlmapper\\Exceptions\\MapperSearchKeyException' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Exceptions/MapperSearchKeyException.php',
+        'Cornford\\Googlmapper\\Exceptions\\MapperSearchLimitException' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Exceptions/MapperSearchLimitException.php',
+        'Cornford\\Googlmapper\\Exceptions\\MapperSearchResponseException' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Exceptions/MapperSearchResponseException.php',
+        'Cornford\\Googlmapper\\Exceptions\\MapperSearchResultException' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Exceptions/MapperSearchResultException.php',
+        'Cornford\\Googlmapper\\Facades\\MapperFacade' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Facades/MapperFacade.php',
+        'Cornford\\Googlmapper\\Mapper' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Mapper.php',
+        'Cornford\\Googlmapper\\MapperBase' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/MapperBase.php',
+        'Cornford\\Googlmapper\\MapperServiceProvider' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/MapperServiceProvider.php',
+        'Cornford\\Googlmapper\\Models\\Circle' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Models/Circle.php',
+        'Cornford\\Googlmapper\\Models\\Location' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Models/Location.php',
+        'Cornford\\Googlmapper\\Models\\Map' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Models/Map.php',
+        'Cornford\\Googlmapper\\Models\\Marker' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Models/Marker.php',
+        'Cornford\\Googlmapper\\Models\\Polygon' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Models/Polygon.php',
+        'Cornford\\Googlmapper\\Models\\Polyline' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Models/Polyline.php',
+        'Cornford\\Googlmapper\\Models\\Rectangle' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Models/Rectangle.php',
+        'Cornford\\Googlmapper\\Models\\Streetview' => __DIR__ . '/..' . '/cornford/googlmapper/src/Cornford/Googlmapper/Models/Streetview.php',
         'CreateActiviteTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_17_193829_create_activite_table.php',
         'CreateArticleTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_17_195741_create_article_table.php',
         'CreateImageTable' => __DIR__ . '/../..' . '/database/migrations/2017_04_17_194824_create_image_table.php',
@@ -442,6 +490,7 @@ class ComposerStaticInit864ae6eeb4ed7cb761f1ae83d84811e1
         'Faker\\Provider\\cs_CZ\\Payment' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/cs_CZ/Payment.php',
         'Faker\\Provider\\cs_CZ\\Person' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/cs_CZ/Person.php',
         'Faker\\Provider\\cs_CZ\\PhoneNumber' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/cs_CZ/PhoneNumber.php',
+        'Faker\\Provider\\cs_CZ\\Text' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/cs_CZ/Text.php',
         'Faker\\Provider\\da_DK\\Address' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/da_DK/Address.php',
         'Faker\\Provider\\da_DK\\Company' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/da_DK/Company.php',
         'Faker\\Provider\\da_DK\\Internet' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/da_DK/Internet.php',
@@ -474,6 +523,7 @@ class ComposerStaticInit864ae6eeb4ed7cb761f1ae83d84811e1
         'Faker\\Provider\\el_GR\\Payment' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/el_GR/Payment.php',
         'Faker\\Provider\\el_GR\\Person' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/el_GR/Person.php',
         'Faker\\Provider\\el_GR\\PhoneNumber' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/el_GR/PhoneNumber.php',
+        'Faker\\Provider\\el_GR\\Text' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/el_GR/Text.php',
         'Faker\\Provider\\en_AU\\Address' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/en_AU/Address.php',
         'Faker\\Provider\\en_AU\\Internet' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/en_AU/Internet.php',
         'Faker\\Provider\\en_AU\\PhoneNumber' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/en_AU/PhoneNumber.php',
@@ -559,6 +609,7 @@ class ComposerStaticInit864ae6eeb4ed7cb761f1ae83d84811e1
         'Faker\\Provider\\fr_FR\\Payment' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/fr_FR/Payment.php',
         'Faker\\Provider\\fr_FR\\Person' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/fr_FR/Person.php',
         'Faker\\Provider\\fr_FR\\PhoneNumber' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/fr_FR/PhoneNumber.php',
+        'Faker\\Provider\\fr_FR\\Text' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/fr_FR/Text.php',
         'Faker\\Provider\\he_IL\\Address' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/he_IL/Address.php',
         'Faker\\Provider\\he_IL\\Company' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/he_IL/Company.php',
         'Faker\\Provider\\he_IL\\Person' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/he_IL/Person.php',
@@ -572,6 +623,7 @@ class ComposerStaticInit864ae6eeb4ed7cb761f1ae83d84811e1
         'Faker\\Provider\\hu_HU\\Payment' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/hu_HU/Payment.php',
         'Faker\\Provider\\hu_HU\\Person' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/hu_HU/Person.php',
         'Faker\\Provider\\hu_HU\\PhoneNumber' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/hu_HU/PhoneNumber.php',
+        'Faker\\Provider\\hu_HU\\Text' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/hu_HU/Text.php',
         'Faker\\Provider\\hy_AM\\Address' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/hy_AM/Address.php',
         'Faker\\Provider\\hy_AM\\Color' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/hy_AM/Color.php',
         'Faker\\Provider\\hy_AM\\Company' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/hy_AM/Company.php',
@@ -616,6 +668,7 @@ class ComposerStaticInit864ae6eeb4ed7cb761f1ae83d84811e1
         'Faker\\Provider\\ka_GE\\Payment' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/ka_GE/Payment.php',
         'Faker\\Provider\\ka_GE\\Person' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/ka_GE/Person.php',
         'Faker\\Provider\\ka_GE\\PhoneNumber' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/ka_GE/PhoneNumber.php',
+        'Faker\\Provider\\ka_GE\\Text' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/ka_GE/Text.php',
         'Faker\\Provider\\kk_KZ\\Address' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/kk_KZ/Address.php',
         'Faker\\Provider\\kk_KZ\\Color' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/kk_KZ/Color.php',
         'Faker\\Provider\\kk_KZ\\Company' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/kk_KZ/Company.php',
@@ -629,6 +682,7 @@ class ComposerStaticInit864ae6eeb4ed7cb761f1ae83d84811e1
         'Faker\\Provider\\ko_KR\\Internet' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/ko_KR/Internet.php',
         'Faker\\Provider\\ko_KR\\Person' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/ko_KR/Person.php',
         'Faker\\Provider\\ko_KR\\PhoneNumber' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/ko_KR/PhoneNumber.php',
+        'Faker\\Provider\\ko_KR\\Text' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/ko_KR/Text.php',
         'Faker\\Provider\\lt_LT\\Address' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/lt_LT/Address.php',
         'Faker\\Provider\\lt_LT\\Company' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/lt_LT/Company.php',
         'Faker\\Provider\\lt_LT\\Internet' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/lt_LT/Internet.php',
@@ -702,6 +756,7 @@ class ComposerStaticInit864ae6eeb4ed7cb761f1ae83d84811e1
         'Faker\\Provider\\ru_RU\\Payment' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/ru_RU/Payment.php',
         'Faker\\Provider\\ru_RU\\Person' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/ru_RU/Person.php',
         'Faker\\Provider\\ru_RU\\PhoneNumber' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/ru_RU/PhoneNumber.php',
+        'Faker\\Provider\\ru_RU\\Text' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/ru_RU/Text.php',
         'Faker\\Provider\\sk_SK\\Address' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/sk_SK/Address.php',
         'Faker\\Provider\\sk_SK\\Company' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/sk_SK/Company.php',
         'Faker\\Provider\\sk_SK\\Internet' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/sk_SK/Internet.php',
@@ -740,6 +795,7 @@ class ComposerStaticInit864ae6eeb4ed7cb761f1ae83d84811e1
         'Faker\\Provider\\uk_UA\\Internet' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/uk_UA/Internet.php',
         'Faker\\Provider\\uk_UA\\Person' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/uk_UA/Person.php',
         'Faker\\Provider\\uk_UA\\PhoneNumber' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/uk_UA/PhoneNumber.php',
+        'Faker\\Provider\\uk_UA\\Text' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/uk_UA/Text.php',
         'Faker\\Provider\\vi_VN\\Address' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/vi_VN/Address.php',
         'Faker\\Provider\\vi_VN\\Color' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/vi_VN/Color.php',
         'Faker\\Provider\\vi_VN\\Internet' => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker/Provider/vi_VN/Internet.php',

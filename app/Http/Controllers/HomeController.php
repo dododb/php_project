@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 
 class HomeController extends Controller
 {
@@ -14,6 +15,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        Mapper::map(15, -1.470085000000040000);
     }
 
     /**
