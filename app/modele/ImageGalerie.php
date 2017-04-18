@@ -32,7 +32,7 @@ class ImageGalerie extends Racine
     {
         $this->_type = $type;
         $this->_idObject = $idObject;
-        $this->_idPho = $idPhoto;
+        $this->_idPhoto = $idPhoto;
 
         $this->_NavigationBarre = new NavigationBarre($this->_type, $this->_idObject, $this->_idPhoto);
         $this->_LikeBarre = new LikeBarre($this->_type, $this->_idObject, $this->_idPhoto);
@@ -46,9 +46,7 @@ class ImageGalerie extends Racine
 
         $this->_NavigationBarre->echoNavigationBarre();
 
-        echo '    <div class="imageGallerie">
-        <img src="http://www.planwallpaper.com/static/images/6944150-abstract-colors-wallpaper_kYyj1ZQ.jpg" id="mainImg">
-    </div>';
+        echo '<div class="imageGallerie"><img src="/php_project/public/images/boutique/'. $this->_idObject . '/' . $this->_idPhoto . '.jpg" id="mainImg"></div>';
 
         $this->_LikeBarre->echoLikeBarre();
 

@@ -8,6 +8,7 @@
 
 namespace App\modele;
 
+use Illuminate\Support\Facades\DB;
 
 class Produit extends Racine
 {
@@ -23,6 +24,14 @@ class Produit extends Racine
     {
         $this->_idObject = $idObject;
 
+        $element = DB::table('article')->select('id', 'article', 'prix', 'description_longue', 'description_courte' , 'image')->where('id', $this->_idObject)->first();
+
+
+        $this->_pathImg = '/php_project/public/images/boutique/' . $this->_idObject . '/'. $element->image;
+        $this->_titre = $element->article;
+        $this->_descriptionRapide = $element->description_courte;
+        $this->_descriptionLongue = $element->description_longue;
+        $this->_prix = $element->prix;
 
     }
 
@@ -48,11 +57,7 @@ class Produit extends Racine
 
         echo $this->_descriptionLongue;
 
-        echo '</p></div><a href="';
-
-        echo $this->_idObject;
-
-        echo '/galerie"><div class="galleriProduit">Galerie</div></a>';
+        echo '</p></div>';
 
         $this->admin();
     }

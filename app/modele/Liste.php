@@ -8,6 +8,8 @@
 
 namespace App\modele;
 
+use Illuminate\Support\Facades\DB;
+
 require 'Liste/ElementListe.php';
 
 class Liste extends Racine
@@ -21,9 +23,11 @@ class Liste extends Racine
 
     public function echoObject()
     {
-        //foreach
-        for ($i = 0; $i < 4; $i++) {
-            $test = new ElementListe($this->_type, 5);
+        $list = DB::table('article')->orderBy('id')->select('id')->get();
+
+        foreach ($list as $id)
+        {
+            $test = new ElementListe($this->_type, $id->id);
             $test->echoElement();
         }
     }

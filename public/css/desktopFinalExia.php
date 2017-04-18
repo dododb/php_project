@@ -51,6 +51,8 @@ text-decoration: none;
 
 h1
 {
+style: initial;
+
 text-align: center;
 color: #FFFFFF;
 font-size: 40px;

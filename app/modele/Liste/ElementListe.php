@@ -1,5 +1,6 @@
 <?php
 namespace App\modele;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Created by PhpStorm.
@@ -23,20 +24,22 @@ class ElementListe
         $this->_type = $type;
         $this->_idObject = $idObject;
 
-        //Demo
-        $this->_pathImg = 'http://bdecesibordeaux.fr/wp-content/uploads/2017/03/17078104_1319108774816483_1695234293_n-300x300.jpg';
-        $this->_titre = 'TITRE';
-        $this->_description = 'Description';
-        $this->_prix = 10;
+        $element = DB::table('article')->select('id', 'article', 'prix', 'description_courte', 'image')->where('id', $this->_idObject)->first();
+
+
+        $this->_pathImg = '/php_project/public/images/boutique/' . $this->_idObject . '/'. $element->image;
+        $this->_titre = $element->article;
+        $this->_description = $element->description_courte;
+        $this->_prix = $element->prix;
     }
 
     public function echoElement()
     {
-        echo '<table class="elementList"><tr><td id="cell1"  rowspan="2"><img src="';
+        echo '<table class="elementList"><tr><td id="cell1"  rowspan="3"><img src="';
 
         echo $this->_pathImg;
 
-        echo '"></td><td id="cell2"  colspan="2"><h2>';
+        echo '"></td><td id="cell2"  colspan="3"><h2>';
 
         echo $this->_titre;
 
