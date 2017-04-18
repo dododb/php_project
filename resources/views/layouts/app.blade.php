@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>List Demo</title>
-    <link rel="stylesheet" type="text/css" href="css/desktop.css">
-    <script type="text/javascript" src="js/animations.js"></script>
+    <link rel="stylesheet" type="text/css" href="/php_project/public/css/desktop.css">
+    <script type="text/javascript" src="/php_project/public/js/animations.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
 
 
