@@ -14,12 +14,11 @@ class InteractionUserActivite extends Migration
     public function up()
     {
         Schema::create('inscrit', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('activite_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->foreign('activite_id')->references('id')->on('activite');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unique(array('activite_id', 'user_id'));
+            $table->primary(['user_id', 'activite_id']);
         });
     }
 
@@ -30,6 +29,6 @@ class InteractionUserActivite extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('inscrit');
     }
 }

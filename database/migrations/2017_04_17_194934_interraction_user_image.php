@@ -19,12 +19,11 @@ class InterractionUserImage extends Migration
             $table->timestamps();
         });
         Schema::create('like', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('image_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->foreign('image_id')->references('id')->on('image');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unique(array('image_id', 'user_id'));
+            $table->primary(['user_id', 'image_id']);
         });
     }
 
@@ -35,6 +34,7 @@ class InterractionUserImage extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('commentaire');
+        Schema::dropIfExists('like');
     }
 }
