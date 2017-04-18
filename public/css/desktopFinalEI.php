@@ -52,7 +52,7 @@ text-decoration: none;
 h1
 {
 text-align: center;
-color: #FFFFFF;
+color: #ffffff;
 font-size: 40px;
 }
 
