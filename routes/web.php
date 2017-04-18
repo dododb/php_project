@@ -11,21 +11,25 @@
 |
 */
 
-Route::get('Accueil', function () {
-    return view('Accueil');
-});
 
-Route::get('/{idObject}/Gallerie/{idPhoto}', function ($idObject, $idPhoto) {
 
-    return view('PhotoGalerie')->with('idPhoto', $idPhoto);
-})->where('idPhoto', '[0-9]+');
 
-Route::get('/{idObject}/Gallerie', function ($idObject) {
-    return view('Gallerie')->with('idObject', $idObject);
-});
 
-/*
-Route::get('/Gallerie/{id}', array {
-'uses'=>
-});
-*/
+
+
+
+
+
+
+
+
+Route::get('{type}', 'ListeController@getListe')->where('type', 'activite|boutique');
+
+Route::get('boutique/{idObject}', 'ProduitController@getProduit')->where('idObject', '[0-9]+');
+
+Route::get('activite/{idObject}', 'ActiviteController@getActivite')->where('idObject', '[0-9]+');
+
+
+Route::get('{type}/{idObject}/galerie', 'GalerieController@getGalerie')->where('type', 'activite|boutique')->where('idObject', '[0-9]+');
+
+Route::get('{type}/{idObject}/galerie/{idPhoto}', 'PhotoGalerieController@getPhoto')->where('type', 'activite|boutique')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');

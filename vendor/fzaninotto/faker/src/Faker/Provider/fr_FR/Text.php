@@ -8419,7 +8419,7 @@ du nez, en promenade; il ne s'en souvenait plus. Il y avait
 auprès, se cognant à tous les angles, la miniature donnée par
 Emma; sa toilette lui parut prétentieuse et son regard en coulisse
 du plus pitoyable effet; puis, à force de considérer cette image
-et d'évoquer le souvenir du modèle, les traits d'Emma peu à peu se
+et d'évoquer le souvenir du modele, les traits d'Emma peu à peu se
 confondirent en sa mémoire, comme si la figure vivante et la
 figure peinte, se frottant l'une contre l'autre, se fussent
 réciproquement effacées. Enfin il lut de ses lettres; elles
@@ -10804,7 +10804,7 @@ informations, vérifier les hypothèques, voir s'il y avait lieu à
 une licitation ou à une liquidation. Elle citait des termes
 techniques, au hasard, prononçait les grands mots d'ordre,
 d'avenir, de prévoyance, et continuellement exagérait les embarras
-de la succession; si bien qu'un jour elle lui montra le modèle
+de la succession; si bien qu'un jour elle lui montra le modele
 d'une autorisation générale pour «gérer et administrer ses
 affaires, faire tous emprunts, signer et endosser tous billets,
 payer toutes sommes, etc.» Elle avait profité des leçons de
