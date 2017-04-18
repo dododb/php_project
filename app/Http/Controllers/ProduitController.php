@@ -19,7 +19,7 @@ class ProduitController extends Controller
 
     public function deleteProduit($idProduit)
     {
-        DB::table('article')->where('id', $idProduit)->delete();
+        //DB::table('article')->where('id', $idProduit)->delete();
         return redirect('boutique');
     }
 }
