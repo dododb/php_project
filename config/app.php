@@ -163,6 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+        Cornford\Googlmapper\MapperServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -228,6 +229,7 @@ return [
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Form'  => Collective\Html\FormFacade::class,
         'Html'  => Collective\Html\HtmlFacade::class,
+        'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class
     ],
 
 ];

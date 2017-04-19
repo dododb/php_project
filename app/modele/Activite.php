@@ -7,7 +7,8 @@
  */
 
 namespace App\modele;
-
+use Illuminate\Support\Facades\DB;
+use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 
 class Activite extends Racine
 {
@@ -18,51 +19,80 @@ class Activite extends Racine
     private $_descriptionRapide;
     private $_descriptionLongue;
     private $_prix;
-    private $_lat;
-    private $_lng;
+    private $_lieu;
 
 
 
     public function __construct($idObject)
     {
         $this->_idObject = $idObject;
-        $this->_lat = -25.363;
-        $this->_lng = 131.044;
+
+        $element = DB::table('activite')->select('id', 'nom_activite', 'prix', 'description_courte', 'description_longue', 'photo_activite', 'lieu')->where('id', $this->_idObject)->first();
+
+        $this->_pathImg = '/php_project/public/images/activite/' . $this->_idObject . '/'. $element->photo_activite;
+        $this->_titre = $element->nom_activite;
+        $this->_descriptionRapide = $element->description_courte;
+        $this->_descriptionLongue = $element->description_longue;
+        $this->_prix = $element->prix;
+
+        $this->_lieu = $element->lieu;
     }
 
     public function echoObject()
     {
-        echo "test Activite " . $this->_idObject;
+        echo '<div class="produitPresentation"><table class="produitTable"><tr><td rowspan="5" id="produitImgCell"><img src="';
 
-        echo '<div id="map"></div><script type="text/javascript">';
+        echo $this->_pathImg;
+
+        echo '"></td></tr><tr><td id="produitTitreCell"><h2>';
+
+        echo $this->_titre;
+
+        echo '</h2></td></tr><tr><td id="produitDescCell">';
+
+        echo $this->_descriptionRapide;
+
+        echo '</td></tr><tr><td id="produitPrixCell">';
+
+        echo $this->_prix;
+
+        echo ' €</td></tr><tr><td id="produitAcheCell"><a href="">Acheter</a></td></tr></table></div><div class="DescriptionComplete"><p>';
+
+        echo $this->_descriptionLongue;
+
+        echo '</p></div>';
+
+        echo '<div class="DescriptionComplete">
+   	<form method="post" action="action.php">
+    	<select name="nom" size="1">
+    		<option>lundi
+    		<option>mardi
+    		<option>mercredi
+    		<option>jeudi
+    		<option>vendredi
+    	</select>
+    	<input type="submit" value="Voter/S\'inscire"/>
+    </option>
+</div>';
 
 
+        echo '<div class="DescriptionComplete">
+<div style="width: 860px; height: 450px;">
+	' . Mapper::render() . '
+</div></div>';
 
-/*
-        echo 'function initMap() {var uluru = {lat: ';
+        echo '<a href=""><div class="galleriProduit">
+Galerie
+</div></a>';
 
-        echo $this->_lat;
+        $this->admin();
+    }
 
-        echo ', lng:';
-
-        echo $this->_lng;
-
-        echo '};
-        var map = new google.maps.Map(document.getElementById(\'map\'), {
-          zoom: 4,
-          center: Activité
-        });
-        var marker = new google.maps.Marker({
-          position: Activite,
-          map: map
-        });
-      }</script>';*/
-
-            echo '
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARzJvXBtSprcylre7miuBQytSGw4llVDM&callback=initMap">
-    </script>';
-
-            echo 'done';
+    private function admin()
+    {
+        echo '<div class="galleriProduit"><form method="post" action="' . $this->_idObject . '">';
+        echo '<input type="hidden" name="_token" value="' . csrf_token() . '">';
+        echo '<input type="submit" name="delete" value="Supprimer">';
+        echo '</form></div>';
     }
 }

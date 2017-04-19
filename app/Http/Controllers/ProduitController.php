@@ -17,7 +17,7 @@ class ProduitController extends Controller
         return view('Index', ['object' => $prd]);
     }
 
-    public function deleteProduit($idProduit)
+    public function destroy($idProduit)
     {
         //DB::table('article')->where('id', $idProduit)->delete();
         return redirect('boutique');

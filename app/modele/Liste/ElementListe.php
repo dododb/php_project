@@ -24,11 +24,21 @@ class ElementListe
         $this->_type = $type;
         $this->_idObject = $idObject;
 
-        $element = DB::table('article')->select('id', 'article', 'prix', 'description_courte', 'image')->where('id', $this->_idObject)->first();
+        if($this->_type == 'activite')
+        {
+            $element = DB::table('activite')->select('id', 'nom_activite', 'prix', 'description_courte', 'photo_activite')->where('id', $this->_idObject)->first();
 
+            $this->_pathImg = '/php_project/public/images/activite/' . $this->_idObject . '/'. $element->photo_activite;
+            $this->_titre = $element->nom_activite;
+        }
+        else if($this->_type == 'boutique')
+        {
+            $element = DB::table('article')->select('id', 'article', 'prix', 'description_courte', 'image')->where('id', $this->_idObject)->first();
 
-        $this->_pathImg = '/php_project/public/images/boutique/' . $this->_idObject . '/'. $element->image;
-        $this->_titre = $element->article;
+            $this->_pathImg = '/php_project/public/images/boutique/' . $this->_idObject . '/'. $element->image;
+            $this->_titre = $element->article;
+        }
+
         $this->_description = $element->description_courte;
         $this->_prix = $element->prix;
     }
@@ -51,7 +61,7 @@ class ElementListe
 
         echo $this->_type . "/" . $this->_idObject;
 
-        echo '">Acheter</a></td><td id="cell4"><p class="prixElementList">';
+        echo '">Voir</a></td><td id="cell4"><p class="prixElementList">';
 
         echo $this->_prix;
 
