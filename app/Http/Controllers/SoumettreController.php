@@ -34,10 +34,4 @@ class SoumettreController extends Controller
         $formulaire =  new FormulaireProduit();
         return view('Index', ['object' => $formulaire]);
     }
-
-    public function setProduit(Request $request)
-    {
-        DB::table('article')->insert(['article' => $request->nom, 'prix' => $request->prix, 'description_courte' => $request->description_courte, 'description_longue' => $request->description_longue]);
-        return redirect('/boutique/soumettre/image');
-    }
 }

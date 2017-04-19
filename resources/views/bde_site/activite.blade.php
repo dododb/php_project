@@ -27,7 +27,7 @@
     </div>
 
     <div class="DescriptionComplete">
-        <form method="post" action="{{route('home')}}">
+        <form method="post" action="">
             <select name="nom" size="1">
                 <option>lundi
                 <option>mardi

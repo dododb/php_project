@@ -35,7 +35,7 @@ class ElementListe
         {
             $element = DB::table('article')->select('id', 'article', 'prix', 'description_courte', 'image')->where('id', $this->_idObject)->first();
 
-            $this->_pathImg = '/php_project/public/images/boutique/' . $this->_idObject . '/'. $element->image;
+            $this->_pathImg = '/php_project/public/images/'. $element->image;
             $this->_titre = $element->article;
         }
 

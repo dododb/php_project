@@ -18,8 +18,7 @@ Route::get('/logout', [
 ]);
 
 Route::get('{type}', 'ListeController@getListe')->where('type', 'activite|boutique');
-Route::get('activite/soumettre', 'SoumettreController@getActiviteFormulaire');
-Route::get('boutique/soumettre', 'SoumettreController@getProduitFormulaire');
+
 Route::get('boutique/soumettre/image', 'SoumettreController@getImageFormulaire');
 Route::post('boutique/soumettre', 'SoumettreController@setProduit');
 
@@ -45,11 +44,11 @@ Route::get('/Gallerie/{id}', array {
     // Validate the request...
     return redirect('/accueil');
 });*/
+Route::get('/home', 'HomeController@index');
+
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function() { // if he is authentificate
-
-    Route::get('/home', ['as' => 'home', 'use' => 'HomeController@index']);
 
 });
 
@@ -71,6 +70,11 @@ Route::group(['middleware' => ['permission:admin']], function() { //if he is adm
     Route::post('boutique/{idObject}/delete', 'ProduitController@destroy')->where('idObject', '[0-9]+');
     Route::post('activite/{idObject}/delete', 'ActiviteController@destroy')->where('idObject', '[0-9]+');
     Route::post('activite/{idObject}/galerie/{idPhoto}/delete', 'PhotoGalerieController@destroy')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
+
+    Route::post('boutique/soumettre/create', 'ProduitController@store');
+
+    Route::get('activite/soumettre', 'activiteController@getSoumettre');
+    Route::get('boutique/soumettre', 'produitController@getSoumettre');
 });
 
 
