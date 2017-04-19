@@ -18,7 +18,10 @@ Route::get('/logout', [
 ]);
 
 Route::get('{type}', 'ListeController@getListe')->where('type', 'activite|boutique');
+Route::get('activite/soumettre', 'SoumettreController@getActiviteFormulaire');
+Route::post('activite/soumettre', 'SoumettreController@setActivite');
 
+Route::get('boutique/soumettre', 'SoumettreController@getProduitFormulaire');
 Route::get('boutique/soumettre/image', 'SoumettreController@getImageFormulaire');
 Route::post('boutique/soumettre', 'SoumettreController@setProduit');
 

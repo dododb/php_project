@@ -50,7 +50,7 @@ class ImageController extends Controller {
             ['image' => $name, 'activite_id' => $request['activite_id']]
         );
         //$image->save();
-        return redirect()->route('activite')
+        return redirect()->route('activite/' . $request->activite_id . '/galerie')
             ->with('success','User created successfully');
     }
 
