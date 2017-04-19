@@ -28,7 +28,7 @@ class ElementListe
         {
             $element = DB::table('activite')->select('id', 'nom_activite', 'prix', 'description_courte', 'photo_activite')->where('id', $this->_idObject)->first();
 
-            $this->_pathImg = '/php_project/public/images/activite/' . $this->_idObject . '/'. $element->photo_activite;
+            $this->_pathImg = '/php_project/public/images/' . $element->photo_activite;
             $this->_titre = $element->nom_activite;
         }
         else if($this->_type == 'boutique')

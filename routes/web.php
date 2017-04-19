@@ -18,6 +18,11 @@ Route::get('/logout', [
 ]);
 
 Route::get('{type}', 'ListeController@getListe')->where('type', 'activite|boutique');
+Route::get('activite/soumettre', 'SoumettreController@getActiviteFormulaire');
+Route::get('boutique/soumettre', 'SoumettreController@getProduitFormulaire');
+Route::get('boutique/soumettre/image', 'SoumettreController@getImageFormulaire');
+Route::post('boutique/soumettre', 'SoumettreController@setProduit');
+
 
 Route::get('boutique/{idObject}', 'ProduitController@getProduit')->where('idObject', '[0-9]+');
 
