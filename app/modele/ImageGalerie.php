@@ -14,8 +14,6 @@ require 'ImageGalerie/Commentaires.php';
 
 use Illuminate\Support\Facades\DB;
 
-
-
 class ImageGalerie extends Racine
 {
 
@@ -27,6 +25,7 @@ class ImageGalerie extends Racine
     private $_LikeBarre;
     private $_CommmentaireUser;
     private $_Commentaires;
+
 
 
     public function __construct($idObject, $idPhoto)
@@ -47,6 +46,8 @@ class ImageGalerie extends Racine
     {
         echo '<div class="container">';
 
+        $this->admin();
+
         $this->_NavigationBarre->echoNavigationBarre();
 
         echo '<div class="imageGallerie"><img src="/php_project/public/images/activite/' . $this->_idObject . '/galerie/'. $this->_elements->image . '" id="mainImg"></div>';
@@ -59,4 +60,16 @@ class ImageGalerie extends Racine
 
         echo '</div>';
     }
+
+    private function admin()
+    {/*
+        echo '<div class="galleriProduit"><form method="DELETE" action="' . $this->_idObject . '">';
+        echo '<input type="hidden" name="_token" value="' . csrf_token() . '">';
+        echo '<input type="submit" name="deleteActivite" value="Supprimer">';
+        echo '</form></div>';
+
+*/
+    }
 }
+/*
+!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}

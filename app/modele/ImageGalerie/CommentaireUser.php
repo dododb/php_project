@@ -8,7 +8,8 @@
  */
 
 namespace App\modele;
-
+use Auth as Auth;
+use Form as Form;
 
 class CommentaireUser
 {
@@ -23,15 +24,20 @@ class CommentaireUser
 
     public function echoCommentaireUser()
     {
-        echo '
-    <div class="posterCommentaire">
-        <div class="nameUser">UserName</div>
-        <div class="commentaireText">
-            Commentaire<br>
-            <textarea id="commentairesArea"></textarea>
-        </div>
-        <button class="poster">Poster</button>
-    </div>
-        ';
+        echo '<div class="posterCommentaire"><div class="nameUser">';
+
+        if(!Auth::guest())
+        {
+            echo Auth::user()->nom . ' ' . Auth::user()->prenom;
+        }
+        else
+        {
+            echo 'Connectez-vous pour pouvoir poster un commentaire';
+        }
+
+        echo '<form method="POST" action="' . $this->_idPhoto  . '" accept-charset="UTF-8">';
+        echo '<input type="hidden" name="_token" value="' . csrf_token() . '">';
+        echo '</div><div class="commentaireText">Commentaire<br><input name="commentaire" type="text" id="commentairesArea"></div><input type="submit" class="poster" value="Poster"></div>';
+        echo '</form>';
     }
 }

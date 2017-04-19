@@ -22,8 +22,7 @@ class Commentaires
         $this->_idObject = $idObject;
         $this->_idPhoto = $idPhoto;
 
-        $this->_commentaires = DB::table('commentaire')->join('users', 'commentaire.id_user', '=', 'users.id')->select('prenom', 'nom', 'id_photo', 'id_user', 'commentaire')->where('id_photo', $this->_idPhoto)->get();
-
+        $this->_commentaires = DB::table('commentaire')->join('users', 'commentaire.id_user', '=', 'users.id')->select('prenom', 'nom', 'id_photo', 'id_user', 'commentaire', 'commentaire.created_at')->orderBy('commentaire.created_at', 'desc')->where('id_photo', $this->_idPhoto)->get();
     }
 
     public function echoCommentaires()
@@ -33,13 +32,9 @@ class Commentaires
             echo '<div class="espaceCommentaires"><div class="commentaires"><div class="userCommentaire">';
             echo $commentaire->nom . ' ' . $commentaire->prenom;
             echo '</div><p class="textCommentaire">';
-            echo $commentaire->commentaire . '</p>';
+            echo $commentaire->created_at . '   : <br>' . $commentaire->commentaire . '</p>';
             echo'</div>';
         }
-
-
-
-
 
         /*
          * if admin :

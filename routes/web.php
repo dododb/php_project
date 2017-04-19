@@ -34,6 +34,8 @@ Route::get('activite/{idObject}', 'ActiviteController@getActivite')->where('idOb
 Route::post('activite/{idObject}', 'ActiviteController@destroy')->where('idObject', '[0-9]+');
 Route::get('activite/{idObject}/galerie', 'GalerieController@getGalerie')->where('idObject', '[0-9]+');
 Route::get('activite/{idObject}/galerie/{idPhoto}', 'PhotoGalerieController@getPhoto')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
+Route::post('activite/{idObject}/galerie/{idPhoto}', 'PhotoGalerieController@postComment')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
+Route::DELETE('activite/{idObject}/galerie/{idPhoto}', 'PhotoGalerieController@destroy')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
 
 
 
