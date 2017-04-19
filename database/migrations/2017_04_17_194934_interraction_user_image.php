@@ -16,11 +16,17 @@ class InterractionUserImage extends Migration
         Schema::create('commentaire', function (Blueprint $table) {
             $table->increments('id');
             $table->string('commentaire');
+            $table->integer('image_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+
+            $table->foreign('image_id')->references('id')->on('image');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
         Schema::create('like', function (Blueprint $table) {
             $table->integer('image_id')->unsigned();
             $table->integer('user_id')->unsigned();
+
             $table->foreign('image_id')->references('id')->on('image');
             $table->foreign('user_id')->references('id')->on('users');
             $table->primary(['user_id', 'image_id']);
