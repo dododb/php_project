@@ -27,15 +27,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth', ['only' => [
-            'getDashboard',
-            'getLogout',
-        ]]);
 
-        $this->middleware('guest', ['except' => [
-            'getDashboard',
-            'getLogout',
-        ]]);
     }
 
 
@@ -92,12 +84,6 @@ class UserController extends Controller
 
         return redirect()->route('users.index')
             ->with('success','User created successfully');
-
-
-
-
-
-
     }
 
     /**
@@ -110,9 +96,6 @@ class UserController extends Controller
     {
         $user = User::find($id);
         return view('users.show',compact('user'));
-
-
-
     }
 
     /**
@@ -124,8 +107,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::lists('display_name','id');
-        $userRole = $user->roles->lists('id','id')->toArray();
+        $roles = Role::pluck('display_name','id');
+        $userRole = $user->roles->pluck('id','id')->toArray();
 
         return view('users.edit',compact('user','roles','userRole'));
     }
@@ -142,7 +125,6 @@ class UserController extends Controller
         $this->validate($request, [
             'nom' => 'required',
             'prenom' => 'required',
-            'avatar' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm-password',
             'roles' => 'required'
