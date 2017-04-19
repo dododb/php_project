@@ -23,7 +23,12 @@ class Liste extends Racine
 
     public function echoObject()
     {
-        $list = DB::table('article')->orderBy('id')->select('id')->get();
+        if($this->_type == 'activite')
+        {
+            $list = DB::table('activite')->orderBy('id')->select('id')->get();
+        } else if($this->_type == 'boutique') {
+            $list = DB::table('article')->orderBy('id')->select('id')->get();
+        }
 
         foreach ($list as $id)
         {

@@ -16,7 +16,8 @@ class CreateActiviteTable extends Migration
         Schema::create('activite', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom_activite');
-            $table->string('description');
+            $table->string('description_courte');
+            $table->text('description_longue');
             $table->string('lieu');
             $table->float('prix');
             $table->string('photo_activite');

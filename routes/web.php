@@ -26,8 +26,11 @@ Route::get('/logout', [
 
 
 Route::get('{type}', 'ListeController@getListe')->where('type', 'activite|boutique');
+
 Route::get('boutique/{idObject}', 'ProduitController@getProduit')->where('idObject', '[0-9]+');
 Route::get('boutique/{idObject}/delete', 'ProduitController@deleteProduit')->where('idObject', '[0-9]+');
+Route::post('boutique/{idObject}', 'ProduitController@destroy')->where('idObject', '[0-9]+');
+
 
 Route::get('activite/{idObject}', 'ActiviteController@getActivite')->where('idObject', '[0-9]+');
 Route::get('{type}/{idObject}/galerie', 'GalerieController@getGalerie')->where('type', 'activite|boutique')->where('idObject', '[0-9]+');

@@ -53,17 +53,20 @@ class Produit extends Racine
 
         echo $this->_prix;
 
-        echo '</td></tr><tr><td id="produitAcheCell"><a href="">Acheter</a></td></tr></table></div><div class="DescriptionComplete"><p>';
+        echo ' €</td></tr><tr><td id="produitAcheCell"><a href="">Acheter</a></td></tr></table></div><div class="DescriptionComplete"><p>';
 
         echo $this->_descriptionLongue;
 
         echo '</p></div>';
 
-        //$this->admin();
+        $this->admin();
     }
 
     private function admin()
     {
-        echo '<a href="' . $this->_idObject . '/delete"><div class="galleriProduit">Supprimer annonce </div></a>';
+        echo '<div class="galleriProduit"><form method="post" action="' . $this->_idObject . '">';
+        echo '<input type="hidden" name="_token" value="' . csrf_token() . '">';
+        echo '<input type="submit" name="delete" value="Supprimer">';
+        echo '</form></div>';
     }
 }
