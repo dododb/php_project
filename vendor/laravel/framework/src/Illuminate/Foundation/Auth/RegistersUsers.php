@@ -35,7 +35,7 @@ trait RegistersUsers
 
         $this->guard()->login($user);
 
-        $user->attachRole(DB::table('roles')->select('id')->where('name', 'user')->first()->id);
+        /*$user->attachRole(DB::table('roles')->select('id')->where('name', 'user')->first()->id);*/
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
     }
