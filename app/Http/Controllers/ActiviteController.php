@@ -17,7 +17,7 @@ class ActiviteController extends Controller
 
         $act = new Activite($object);
 
-        return view('Index', ['object' => $act]);
+        return view('bde_site.activite', ['object' => $act, 'adresse' => $element->adresse]);
     }
 
     public function destroy($object)

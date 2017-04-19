@@ -34,7 +34,7 @@ class ImageGalerie extends Racine
         $this->_idObject = $idObject;
         $this->_idPhoto = $idPhoto;
 
-        $this->_elements = DB::table('image')->select('id', 'id_activite', 'image')->where('id_activite', $this->_idObject)->where('id', $this->_idPhoto)->first();
+        $this->_elements = DB::table('image')->select('id', 'activite_id', 'image')->where('activite_id', $this->_idObject)->where('id', $this->_idPhoto)->first();
 
 
         $this->_NavigationBarre = new NavigationBarre($this->_idObject, $this->_idPhoto);

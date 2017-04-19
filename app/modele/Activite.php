@@ -13,84 +13,24 @@ use Auth as Auth;
 
 class Activite extends Racine
 {
-    private $_idObject;
+    public $idObject;
 
-    private $_pathImg;
-    private $_titre;
-    private $_descriptionRapide;
-    private $_descriptionLongue;
-    private $_prix;
-
-
+    public $pathImg;
+    public $titre;
+    public $descriptionRapide;
+    public $descriptionLongue;
+    public $prix;
 
     public function __construct($idObject)
     {
-        $this->_idObject = $idObject;
+        $this->idObject = $idObject;
 
-        $element = DB::table('activite')->select('id', 'nom_activite', 'prix', 'description_courte', 'description_longue', 'photo_activite')->where('id', $this->_idObject)->first();
+        $element = DB::table('activite')->select('id', 'nom_activite', 'prix', 'description_courte', 'description_longue', 'photo_activite')->where('id', $this->idObject)->first();
 
-        $this->_pathImg = '/php_project/public/images/activite/' . $this->_idObject . '/'. $element->photo_activite;
-        $this->_titre = $element->nom_activite;
-        $this->_descriptionRapide = $element->description_courte;
-        $this->_descriptionLongue = $element->description_longue;
-        $this->_prix = $element->prix;
-    }
-
-    public function echoObject()
-    {
-        echo '<div class="produitPresentation"><table class="produitTable"><tr><td rowspan="5" id="produitImgCell"><img src="';
-
-        echo $this->_pathImg;
-
-        echo '"></td></tr><tr><td id="produitTitreCell"><h2>';
-
-        echo $this->_titre;
-
-        echo '</h2></td></tr><tr><td id="produitDescCell">';
-
-        echo $this->_descriptionRapide;
-
-        echo '</td></tr><tr><td id="produitPrixCell">';
-
-        echo $this->_prix;
-
-        echo ' €</td></tr><tr><td id="produitAcheCell"><a href="">Acheter</a></td></tr></table></div><div class="DescriptionComplete"><p>';
-
-        echo $this->_descriptionLongue;
-
-        echo '</p></div>';
-
-        echo '<div class="DescriptionComplete">
-   	<form method="post" action="action.php">
-    	<select name="nom" size="1">
-    		<option>lundi
-    		<option>mardi
-    		<option>mercredi
-    		<option>jeudi
-    		<option>vendredi
-    	</select>
-    	<input type="submit" value="Voter/S\'inscire"/>
-    </option>
-    </form>
-</div>';
-
-
-        echo '<div class="DescriptionComplete"><div style="width: 860px; height: 450px;">' . Mapper::render() . '</div></div>';
-
-        echo '<a href="' . $this->_idObject . '\galerie"><div class="galleriProduit">Galerie</div></a>';
-
-        $this->admin();
-    }
-
-    private function admin()
-    {
-        if(DB::table('role_user')->select('user_id', 'role_id')->where('user_id', (Auth::user()->id))->first() != null) {
-            if ('1' == DB::table('role_user')->select('user_id', 'role_id')->where('user_id', (Auth::user()->id))->first()->role_id) {
-                echo '<div class="galleriProduit"><form method="post" action="' . $this->_idObject . '/delete">';
-                echo '<input type="hidden" name="_token" value="' . csrf_token() . '">';
-                echo '<input type="submit" name="deleteActivite" value="Supprimer">';
-                echo '</form></div>';
-            }
-        }
+        $this->pathImg = '/php_project/public/images/activite/' . $this->idObject . '/'. $element->photo_activite;
+        $this->titre = $element->nom_activite;
+        $this->descriptionRapide = $element->description_courte;
+        $this->descriptionLongue = $element->description_longue;
+        $this->prix = $element->prix;
     }
 }

@@ -26,11 +26,6 @@ Route::get('activite/{idObject}/galerie', 'GalerieController@getGalerie')->where
 Route::get('activite/{idObject}/galerie/{idPhoto}', 'PhotoGalerieController@getPhoto')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
 Route::post('activite/{idObject}/galerie/{idPhoto}', 'PhotoGalerieController@postComment')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
 
-Route::post('boutique/{idObject}/delete', 'ProduitController@destroy')->where('idObject', '[0-9]+');
-Route::post('activite/{idObject}/delete', 'ActiviteController@destroy')->where('idObject', '[0-9]+');
-Route::post('activite/{idObject}/galerie/{idPhoto}/delete', 'PhotoGalerieController@destroy')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
-
-
 
 Route::get('mentions-legales', function () {
     return view('mentionLegal');
@@ -49,7 +44,7 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth']], function() { // if he is authentificate
 
-    Route::get('/home', 'HomeController@index');
+    Route::get('/home', ['as' => 'home', 'use' => 'HomeController@index']);
 
 });
 
@@ -67,6 +62,10 @@ Route::group(['middleware' => ['permission:admin']], function() { //if he is adm
     Route::get('roles/{id}/edit', ['as' => 'roles.edit', 'uses' => 'RoleController@edit',]);
     Route::patch('roles/{id}', ['as' => 'roles.update', 'uses' => 'RoleController@update']);
     Route::delete('roles/{id}', ['as' => 'roles.destroy', 'uses' => 'RoleController@destroy']);
+
+    Route::post('boutique/{idObject}/delete', 'ProduitController@destroy')->where('idObject', '[0-9]+');
+    Route::post('activite/{idObject}/delete', 'ActiviteController@destroy')->where('idObject', '[0-9]+');
+    Route::post('activite/{idObject}/galerie/{idPhoto}/delete', 'PhotoGalerieController@destroy')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
 });
 
 
