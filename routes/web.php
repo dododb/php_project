@@ -17,7 +17,9 @@ Route::get('/logout', [
     'middleware' => 'auth'
 ]);
 
-
+Route::get('getactivites', function(){
+    //
+})->middleware('getactivites');
 
 
 
