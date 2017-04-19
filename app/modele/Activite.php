@@ -10,6 +10,7 @@ namespace App\modele;
 use Illuminate\Support\Facades\DB;
 use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
 use Auth as Auth;
+require 'Activite/InscriptionVote.php';
 
 class Activite extends Racine
 {
@@ -60,19 +61,8 @@ class Activite extends Racine
 
         echo '</p></div>';
 
-        echo '<div class="DescriptionComplete">
-   	<form method="post" action="action.php">
-    	<select name="nom" size="1">
-    		<option>lundi
-    		<option>mardi
-    		<option>mercredi
-    		<option>jeudi
-    		<option>vendredi
-    	</select>
-    	<input type="submit" value="Voter/S\'inscire"/>
-    </option>
-    </form>
-</div>';
+        $test =  new InscriptionVote($this->_idObject);
+        $test->echoListVote();
 
 
         echo '<div class="DescriptionComplete"><div style="width: 860px; height: 450px;">' . Mapper::render() . '</div></div>';

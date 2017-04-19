@@ -27,7 +27,7 @@ class Galerie extends Racine
         $i = 1;
         foreach ($this->_elements as $line)
         {
-            $this->echoCaseImage($line->id, '/php_project/public/images/activite/' . $this->_idObject . '/galerie/'. $line->image);
+            $this->echoCaseImage($line->id, '/php_project/public/images/'. $line->image);
 
             $i++;
             if($i%4-1 == 0)

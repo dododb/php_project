@@ -9,6 +9,7 @@
 namespace App\modele;
 
 use Illuminate\Support\Facades\DB;
+use Auth as Auth;
 
 require 'Liste/ElementListe.php';
 
@@ -23,6 +24,8 @@ class Liste extends Racine
 
     public function echoObject()
     {
+        $this->all();
+
         if($this->_type == 'activite')
         {
             $list = DB::table('activite')->orderBy('id')->select('id')->get();
@@ -34,6 +37,26 @@ class Liste extends Racine
         {
             $test = new ElementListe($this->_type, $id->id);
             $test->echoElement();
+        }
+
+
+    }
+
+    private function all()
+    {
+        if(!Auth::guest())
+        {
+            if($this->_type == 'activite')
+            {
+                echo '<a href="' . $this->_type . '/soumettre"><div class="modoButtun">Soumettre une activité</div></a>';
+            }
+            else if(DB::table('role_user')->select('user_id', 'role_id')->where('user_id', (Auth::user()->id))->first() != null)
+            {
+                if ('1' == DB::table('role_user')->select('user_id', 'role_id')->where('user_id', (Auth::user()->id))->first()->role_id)
+                {
+                    echo '<a href="' . $this->_type . '/soumettre"><div class="modoButtun">Ajouter produit</div></a>';
+                }
+            }
         }
     }
 }
