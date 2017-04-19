@@ -17,14 +17,6 @@ Route::get('/logout', [
     'middleware' => 'auth'
 ]);
 
-
-
-
-
-
-
-
-
 Route::get('{type}', 'ListeController@getListe')->where('type', 'activite|boutique');
 
 Route::get('boutique/{idObject}', 'ProduitController@getProduit')->where('idObject', '[0-9]+');
@@ -55,25 +47,29 @@ Route::get('/Gallerie/{id}', array {
 });*/
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
-
-
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth']], function() { // if he is authentificate
 
     Route::get('/home', 'HomeController@index');
 
-    Route::resource('users','UserController');
+});
 
-   /* Route::get('roles',['as'=>'roles.index','uses'=>'RoleController@index','middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
-    Route::get('roles/create',['as'=>'roles.create','uses'=>'RoleController@create','middleware' => ['permission:role-create']]);
-    Route::post('roles/create',['as'=>'roles.store','uses'=>'RoleController@store','middleware' => ['permission:role-create']]);
-    Route::get('roles/{id}',['as'=>'roles.show','uses'=>'RoleController@show']);
-    Route::get('roles/{id}/edit',['as'=>'roles.edit','uses'=>'RoleController@edit','middleware' => ['permission:role-edit']]);
-    Route::patch('roles/{id}',['as'=>'roles.update','uses'=>'RoleController@update','middleware' => ['permission:role-edit']]);
-    Route::delete('roles/{id}',['as'=>'roles.destroy','uses'=>'RoleControl  ler@destroy','middleware' => ['permission:role-delete']]);*/
-
+Route::group(['middleware' => ['permission:bde']], function() { //if he is bde member
 
 });
+
+Route::group(['middleware' => ['permission:admin']], function() { //if he is admin
+    Route::resource('users', 'UserController');
+
+    Route::get('roles', ['as' => 'roles.index', 'uses' => 'RoleController@index']);
+    Route::get('roles/create', ['as' => 'roles.create', 'uses' => 'RoleController@create']);
+    Route::post('roles/create', ['as' => 'roles.store', 'uses' => 'RoleController@store']);
+    Route::get('roles/{id}', ['as' => 'roles.show', 'uses' => 'RoleController@show']);
+    Route::get('roles/{id}/edit', ['as' => 'roles.edit', 'uses' => 'RoleController@edit',]);
+    Route::patch('roles/{id}', ['as' => 'roles.update', 'uses' => 'RoleController@update']);
+    Route::delete('roles/{id}', ['as' => 'roles.destroy', 'uses' => 'RoleController@destroy']);
+});
+
+
 Route::get('imageUploadForm', 'ImageController@upload' );
 Route::post('imageUploadForm', 'ImageController@store' );
 Route::get('showLists', 'ImageController@show' );

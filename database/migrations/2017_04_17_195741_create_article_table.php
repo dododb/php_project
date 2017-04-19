@@ -14,7 +14,8 @@ class CreateArticleTable extends Migration
     public function up()
     {
         Schema::create('article', function (Blueprint $table) {
-            $table->increments('id');
+            //$table->engine = 'InnoDB';
+            $table->increments('id')->unsigned();
             $table->string('image');
             $table->string('article',100)->unique();
             $table->float('prix');
