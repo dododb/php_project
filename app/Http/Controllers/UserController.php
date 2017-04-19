@@ -52,7 +52,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::lists('display_name','id');
+        $roles = Role::pluck('display_name','id');
         return view('users.create',compact('roles'));
     }
 
@@ -67,12 +67,10 @@ class UserController extends Controller
         $this->validate($request, [
             'nom' => 'required',
             'prenom' => 'required',
-            'avatar' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
             'roles' => 'required'
         ]);
-
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
@@ -82,8 +80,8 @@ class UserController extends Controller
             $user->attachRole($value);
         }
 
-        return redirect()->route('users.index')
-            ->with('success','User created successfully');
+        /*return redirect()->route('users.index')
+            ->with('success','User created successfully');*/
     }
 
     /**

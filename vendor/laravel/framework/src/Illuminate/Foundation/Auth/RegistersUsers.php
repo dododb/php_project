@@ -5,6 +5,7 @@ namespace Illuminate\Foundation\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\DB;
 
 trait RegistersUsers
 {
@@ -34,6 +35,7 @@ trait RegistersUsers
 
         $this->guard()->login($user);
 
+        $user->attachRole(DB::table('roles')->select('id')->where('name', 'user')->first()->id);
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
     }
