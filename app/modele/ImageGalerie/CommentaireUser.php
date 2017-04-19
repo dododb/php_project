@@ -12,13 +12,11 @@ namespace App\modele;
 
 class CommentaireUser
 {
-    private $_type;
     private $_idObject;
     private $_idPhoto;
 
-    public function __construct($type, $idObject, $idPhoto)
+    public function __construct($idObject, $idPhoto)
     {
-        $this->_type = $type;
         $this->_idObject = $idObject;
         $this->_idPhoto = $idPhoto;
     }

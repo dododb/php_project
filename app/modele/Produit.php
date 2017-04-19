@@ -66,7 +66,7 @@ class Produit extends Racine
     {
         echo '<div class="galleriProduit"><form method="post" action="' . $this->_idObject . '">';
         echo '<input type="hidden" name="_token" value="' . csrf_token() . '">';
-        echo '<input type="submit" name="delete" value="Supprimer">';
+        echo '<input type="submit" name="deleteProduit" value="Supprimer">';
         echo '</form></div>';
     }
 }

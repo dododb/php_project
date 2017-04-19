@@ -70,17 +70,13 @@ class Activite extends Racine
     	</select>
     	<input type="submit" value="Voter/S\'inscire"/>
     </option>
+    </form>
 </div>';
 
 
-        echo '<div class="DescriptionComplete">
-<div style="width: 860px; height: 450px;">
-	' . Mapper::render() . '
-</div></div>';
+        echo '<div class="DescriptionComplete"><div style="width: 860px; height: 450px;">' . Mapper::render() . '</div></div>';
 
-        echo '<a href=""><div class="galleriProduit">
-Galerie
-</div></a>';
+        echo '<a href="' . $this->_idObject . '\galerie"><div class="galleriProduit">Galerie</div></a>';
 
         $this->admin();
     }
@@ -89,7 +85,7 @@ Galerie
     {
         echo '<div class="galleriProduit"><form method="post" action="' . $this->_idObject . '">';
         echo '<input type="hidden" name="_token" value="' . csrf_token() . '">';
-        echo '<input type="submit" name="delete" value="Supprimer">';
+        echo '<input type="submit" name="deleteActivite" value="Supprimer">';
         echo '</form></div>';
     }
 }

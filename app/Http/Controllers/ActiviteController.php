@@ -19,4 +19,10 @@ class ActiviteController extends Controller
 
         return view('Index', ['object' => $act]);
     }
+
+    public function destroy($object)
+    {
+        //DB::table('activite')->where('id', $object)->delete();
+        return redirect('activite');
+    }
 }

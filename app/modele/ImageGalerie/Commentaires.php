@@ -7,31 +7,39 @@
  * Time: 12:05
  */
 namespace App\modele;
+use Illuminate\Support\Facades\DB;
 
 
 class Commentaires
 {
-    private $_type;
     private $_idObject;
     private $_idPhoto;
 
-    public function __construct($type, $idObject, $idPhoto)
+    private $_commentaires;
+
+    public function __construct( $idObject, $idPhoto)
     {
-        $this->_type = $type;
         $this->_idObject = $idObject;
         $this->_idPhoto = $idPhoto;
+
+        $this->_commentaires = DB::table('commentaire')->join('users', 'commentaire.id_user', '=', 'users.id')->select('prenom', 'nom', 'id_photo', 'id_user', 'commentaire')->where('id_photo', $this->_idPhoto)->get();
+
     }
 
     public function echoCommentaires()
     {
+        foreach ($this->_commentaires as $commentaire)
+        {
+            echo '<div class="espaceCommentaires"><div class="commentaires"><div class="userCommentaire">';
+            echo $commentaire->nom . ' ' . $commentaire->prenom;
+            echo '</div><p class="textCommentaire">';
+            echo $commentaire->commentaire . '</p>';
+            echo'</div>';
+        }
 
-        echo '<div class="espaceCommentaires"><div class="commentaires"><div class="userCommentaire">';
-        echo 'User';
-        echo '</div><p class="textCommentaire">';
-        echo 'Commentaire Exemple :         Haec ubi latius fama vulgasset missaeque relationes adsiduae Gallum Caesarem permovissent, quoniam magister equitum longius ea tempestate distinebatur, iussus comes orientis Nebridius contractis undique militaribus copiis ad eximendam periculo civitatem amplam et oportunam studio properabat ingenti, quo cognito abscessere latrones nulla re amplius memorabili gesta, dispersique ut solent avia montium petiere celsorum.
-                Iamque non umbratis fallaciis res agebatur, sed qua palatium est extra muros, armatis omne circumdedit. ingressusque obscuro iam die, ablatis regiis indumentis Caesarem tunica texit et paludamento communi, eum post haec nihil passurum velut mandato principis iurandi crebritate confirmans et statim inquit exsurge et inopinum carpento privato inpositum ad Histriam duxit prope oppidum Polam, ubi quondam peremptum Constantini filium accepimus Crispum.</p>
-';
-        echo'</div>';
+
+
+
 
         /*
          * if admin :

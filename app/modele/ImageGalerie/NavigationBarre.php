@@ -12,23 +12,21 @@ namespace App\modele;
 
 class NavigationBarre
 {
-    private $_type;
     private $_idObject;
     private $_idPhoto;
 
-    public function __construct($type, $idObject, $idPhoto)
+    public function __construct($idObject, $idPhoto)
     {
-        $this->_type = $type;
         $this->_idObject = $idObject;
         $this->_idPhoto = $idPhoto;
     }
 
     public function echoNavigationBarre()
     {
-        echo '<div class="gallerieNavigation">
-        <a href=""><img src="img/site/g.png" class="nav"></a>
-        <a href="">Galerie</a>
-        <a href=""><img src="img/site/d.png" class="nav"></a>
-        </div>';
+        echo '<div class="gallerieNavigation">';
+        //echo '<a href="' . ($this->_idPhoto-1) . '"><img src="img/site/g.png" class="nav"></a>';
+        echo '<a href="../galerie">Galerie</a>';
+        //echo '<a href="' . ($this->_idPhoto+1) . '"><img src="img/site/d.png" class="nav"></a>';
+        echo '</div>';
     }
 }

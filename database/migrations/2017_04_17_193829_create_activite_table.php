@@ -18,7 +18,7 @@ class CreateActiviteTable extends Migration
             $table->string('nom_activite');
             $table->string('description_courte');
             $table->text('description_longue');
-            $table->string('lieu');
+            $table->string('adresse');
             $table->float('prix');
             $table->string('photo_activite');
             $table->timestamps();
