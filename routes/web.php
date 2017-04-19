@@ -16,6 +16,7 @@ Route::get('/logout', [
     'as' => 'logout',
     'middleware' => 'auth'
 ]);
+Route::get('home', 'ListeController@getListe')->where('type', 'activite|boutique');
 
 Route::get('{type}', 'ListeController@getListe')->where('type', 'activite|boutique');
 Route::get('activite/soumettre', 'SoumettreController@getActiviteFormulaire');
