@@ -21,7 +21,7 @@ class LikeBarre
     {
         $this->_idObject = $idObject;
         $this->_idPhoto = $idPhoto;
-        $this->_like = DB::table('like')->select('image_id')->where('image_id', $this->_idObject)->count();
+        //$this->_like = DB::table('like')->select('image_id')->where('image_id', $this->_idObject)->count();
     }
 
     public function echoLikeBarre()

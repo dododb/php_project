@@ -27,7 +27,7 @@ class Activite extends Racine
 
         $element = DB::table('activite')->select('id', 'nom_activite', 'prix', 'description_courte', 'description_longue', 'photo_activite')->where('id', $this->idObject)->first();
 
-        $this->pathImg = '/php_project/public/images/activite/' . $this->idObject . '/'. $element->photo_activite;
+        $this->pathImg = '/php_project/public/images/' . $element->photo_activite;
         $this->titre = $element->nom_activite;
         $this->descriptionRapide = $element->description_courte;
         $this->descriptionLongue = $element->description_longue;
