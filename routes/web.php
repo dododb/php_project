@@ -28,14 +28,15 @@ Route::get('/logout', [
 Route::get('{type}', 'ListeController@getListe')->where('type', 'activite|boutique');
 
 Route::get('boutique/{idObject}', 'ProduitController@getProduit')->where('idObject', '[0-9]+');
-Route::post('boutique/{idObject}', 'ProduitController@destroy')->where('idObject', '[0-9]+');
 
 Route::get('activite/{idObject}', 'ActiviteController@getActivite')->where('idObject', '[0-9]+');
-Route::post('activite/{idObject}', 'ActiviteController@destroy')->where('idObject', '[0-9]+');
 Route::get('activite/{idObject}/galerie', 'GalerieController@getGalerie')->where('idObject', '[0-9]+');
 Route::get('activite/{idObject}/galerie/{idPhoto}', 'PhotoGalerieController@getPhoto')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
 Route::post('activite/{idObject}/galerie/{idPhoto}', 'PhotoGalerieController@postComment')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
-Route::DELETE('activite/{idObject}/galerie/{idPhoto}', 'PhotoGalerieController@destroy')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
+
+Route::post('boutique/{idObject}/delete', 'ProduitController@destroy')->where('idObject', '[0-9]+');
+Route::post('activite/{idObject}/delete', 'ActiviteController@destroy')->where('idObject', '[0-9]+');
+Route::post('activite/{idObject}/galerie/{idPhoto}/delete', 'PhotoGalerieController@destroy')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
 
 
 

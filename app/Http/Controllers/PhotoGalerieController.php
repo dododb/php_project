@@ -34,6 +34,15 @@ class PhotoGalerieController extends Controller
 
     public function destroy(Request $request, $idObject, $idPhoto)
     {
-        dd($request);
+        if(!$request->supprimer == 'activite')
+        {
+            DB::table('commentaire')->where('id', $request->supprimer)->delete();
+            return redirect('activite/' . $idObject . '/galerie/' . $idPhoto);
+        }
+        else
+        {
+            DB::table('activite')->where('id', $idPhoto)->delete();
+            dd($request);
+        }
     }
 }

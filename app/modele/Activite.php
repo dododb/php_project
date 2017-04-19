@@ -9,6 +9,7 @@
 namespace App\modele;
 use Illuminate\Support\Facades\DB;
 use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
+use Auth as Auth;
 
 class Activite extends Racine
 {
@@ -83,9 +84,13 @@ class Activite extends Racine
 
     private function admin()
     {
-        echo '<div class="galleriProduit"><form method="post" action="' . $this->_idObject . '">';
-        echo '<input type="hidden" name="_token" value="' . csrf_token() . '">';
-        echo '<input type="submit" name="deleteActivite" value="Supprimer">';
-        echo '</form></div>';
+        if(DB::table('role_user')->select('user_id', 'role_id')->where('user_id', (Auth::user()->id))->first() != null) {
+            if ('1' == DB::table('role_user')->select('user_id', 'role_id')->where('user_id', (Auth::user()->id))->first()->role_id) {
+                echo '<div class="galleriProduit"><form method="post" action="' . $this->_idObject . '/delete">';
+                echo '<input type="hidden" name="_token" value="' . csrf_token() . '">';
+                echo '<input type="submit" name="deleteActivite" value="Supprimer">';
+                echo '</form></div>';
+            }
+        }
     }
 }

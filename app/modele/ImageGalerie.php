@@ -13,6 +13,7 @@ require 'ImageGalerie/CommentaireUser.php';
 require 'ImageGalerie/Commentaires.php';
 
 use Illuminate\Support\Facades\DB;
+use Auth as Auth;
 
 class ImageGalerie extends Racine
 {
@@ -46,7 +47,9 @@ class ImageGalerie extends Racine
     {
         echo '<div class="container">';
 
-        $this->admin();
+        if(!Auth::guest()) {
+            $this->admin();
+        }
 
         $this->_NavigationBarre->echoNavigationBarre();
 
@@ -62,14 +65,16 @@ class ImageGalerie extends Racine
     }
 
     private function admin()
-    {/*
-        echo '<div class="galleriProduit"><form method="DELETE" action="' . $this->_idObject . '">';
-        echo '<input type="hidden" name="_token" value="' . csrf_token() . '">';
-        echo '<input type="submit" name="deleteActivite" value="Supprimer">';
-        echo '</form></div>';
+    {
+        if(DB::table('role_user')->select('user_id', 'role_id')->where('user_id', (Auth::user()->id))->first() != null) {
+            if ('1' == DB::table('role_user')->select('user_id', 'role_id')->where('user_id', (Auth::user()->id))->first()->role_id) {
+                echo '<div class="galleriProduit"><form method="post" action="' . $this->_idObject . '/delete">';
+                echo '<input type="hidden" name="_token" value="' . csrf_token() . '">';
+                echo '<input type="hidden" name="supprimer" value="activite">';
+                echo '<input type="submit" name="Activite" value="supprimer">';
 
-*/
+                echo '</form></div>';
+            }
+        }
     }
 }
-/*
-!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}

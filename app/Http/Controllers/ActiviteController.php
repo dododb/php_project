@@ -22,7 +22,7 @@ class ActiviteController extends Controller
 
     public function destroy($object)
     {
-        //DB::table('activite')->where('id', $object)->delete();
+        DB::table('activite')->where('id', $object)->delete();
         return redirect('activite');
     }
 }
