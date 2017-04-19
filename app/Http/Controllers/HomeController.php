@@ -15,7 +15,9 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        Mapper::map(15, -1.470085000000040000);
+
+        Mapper::location('23 avenue du président François Mitterrand Floirac')->map();
+        //Mapper::map(15, -1.470085000000040000);
     }
 
     /**
