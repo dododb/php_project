@@ -22,7 +22,7 @@ class Commentaires
         $this->_idObject = $idObject;
         $this->_idPhoto = $idPhoto;
 
-        $this->_commentaires = DB::table('commentaire')->join('users', 'commentaire.id_user', '=', 'users.id')->select('prenom', 'nom', 'id_photo', 'id_user', 'commentaire', 'commentaire.created_at', 'commentaire.id')->orderBy('commentaire.created_at', 'desc')->where('id_photo', $this->_idPhoto)->get();
+        $this->_commentaires = DB::table('commentaire')->join('users', 'commentaire.user_id', '=', 'users.id')->select('prenom', 'nom', 'commentaire.id', 'user_id', 'commentaire', 'commentaire.created_at', 'commentaire.id')->orderBy('commentaire.created_at', 'desc')->where('commentaire.image_id', $this->_idPhoto)->get();
     }
 
     public function echoCommentaires()
@@ -34,7 +34,8 @@ class Commentaires
             echo '</div><p class="textCommentaire">';
             echo $commentaire->created_at . '   : <br>' . $commentaire->commentaire . '</p>';
             echo'</div>';
-            $this->admin($commentaire->id);
+            if(!Auth::guest()) $this->admin($commentaire->id);
+
         }
         echo '</div>';
     }

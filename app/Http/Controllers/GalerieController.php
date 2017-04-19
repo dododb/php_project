@@ -12,6 +12,6 @@ class GalerieController extends Controller
     {
         $gal = new Galerie($idObject);
 
-        return view('Index', ['object' => $gal]);
+        return view('bde_site.galerie', ['object' => $gal]);
     }
 }

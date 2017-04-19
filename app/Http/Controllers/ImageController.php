@@ -8,6 +8,7 @@ use Guzzle\Tests\Plugin\Redirect;
 use App\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 class ImageController extends Controller {
 
@@ -30,10 +31,12 @@ class ImageController extends Controller {
     {
         $image = new Image();
         $this->validate($request, [
-            'image' => 'required'
+            'image' => 'required',
+            'activite_id' => 'required'
         ]);
         if($request->hasFile('image')) {
             $file = Input::file('image');
+            //dd($file);
             //getting timestamp
             $timestamp = str_replace([' ', ':'], '-', Carbon::now()->toDateTimeString());
 
@@ -43,8 +46,11 @@ class ImageController extends Controller {
 
             $file->move(public_path().'/images/', $name);
         }
-        $image->save();
-        return redirect()->route('users.index')
+        DB::table('image')->insert(
+            ['image' => $name, 'activite_id' => $request['activite_id']]
+        );
+        //$image->save();
+        return redirect()->route('activite/' . $request->activite_id . '/galerie')
             ->with('success','User created successfully');
     }
 

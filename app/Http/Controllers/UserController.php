@@ -52,7 +52,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::lists('display_name','id');
+        $roles = Role::pluck('display_name','id');
         return view('users.create',compact('roles'));
     }
 

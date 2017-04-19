@@ -25,7 +25,7 @@ class PhotoGalerieController extends Controller
         if(!Auth::guest())
         {
             DB::table('commentaire')->insert(
-                ['id_photo' => $idPhoto, 'id_user' => Auth::user()->id, 'commentaire' => $request->commentaire, 'created_at' => Carbon::now('Europe/Paris'), 'updated_at' => Carbon::now('Europe/Paris')]
+                ['image_id' => $idPhoto, 'user_id' => Auth::user()->id, 'commentaire' => $request->commentaire, 'created_at' => Carbon::now('Europe/Paris'), 'updated_at' => Carbon::now('Europe/Paris')]
             );
         }
 
