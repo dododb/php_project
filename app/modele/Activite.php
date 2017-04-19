@@ -9,6 +9,7 @@
 namespace App\modele;
 use Illuminate\Support\Facades\DB;
 use Cornford\Googlmapper\Facades\MapperFacade as Mapper;
+use Auth as Auth;
 
 class Activite extends Racine
 {
@@ -70,26 +71,26 @@ class Activite extends Racine
     	</select>
     	<input type="submit" value="Voter/S\'inscire"/>
     </option>
+    </form>
 </div>';
 
 
-        echo '<div class="DescriptionComplete">
-<div style="width: 860px; height: 450px;">
-	' . Mapper::render() . '
-</div></div>';
+        echo '<div class="DescriptionComplete"><div style="width: 860px; height: 450px;">' . Mapper::render() . '</div></div>';
 
-        echo '<a href=""><div class="galleriProduit">
-Galerie
-</div></a>';
+        echo '<a href="' . $this->_idObject . '\galerie"><div class="galleriProduit">Galerie</div></a>';
 
         $this->admin();
     }
 
     private function admin()
     {
-        echo '<div class="galleriProduit"><form method="post" action="' . $this->_idObject . '">';
-        echo '<input type="hidden" name="_token" value="' . csrf_token() . '">';
-        echo '<input type="submit" name="delete" value="Supprimer">';
-        echo '</form></div>';
+        if(DB::table('role_user')->select('user_id', 'role_id')->where('user_id', (Auth::user()->id))->first() != null) {
+            if ('1' == DB::table('role_user')->select('user_id', 'role_id')->where('user_id', (Auth::user()->id))->first()->role_id) {
+                echo '<div class="galleriProduit"><form method="post" action="' . $this->_idObject . '/delete">';
+                echo '<input type="hidden" name="_token" value="' . csrf_token() . '">';
+                echo '<input type="submit" name="deleteActivite" value="Supprimer">';
+                echo '</form></div>';
+            }
+        }
     }
 }

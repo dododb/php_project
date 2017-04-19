@@ -8,9 +8,9 @@ use App\modele\Galerie;
 
 class GalerieController extends Controller
 {
-    public function getGalerie($type, $idObject)
+    public function getGalerie($idObject)
     {
-        $gal = new Galerie($type,$idObject);
+        $gal = new Galerie($idObject);
 
         return view('Index', ['object' => $gal]);
     }

@@ -12,15 +12,15 @@ require 'ImageGalerie/LikeBarre.php';
 require 'ImageGalerie/CommentaireUser.php';
 require 'ImageGalerie/Commentaires.php';
 
-
-
+use Illuminate\Support\Facades\DB;
+use Auth as Auth;
 
 class ImageGalerie extends Racine
 {
 
-    private $_type;
     private $_idObject;
     private $_idPhoto;
+    private $_elements;
 
     private $_NavigationBarre;
     private $_LikeBarre;
@@ -28,25 +28,32 @@ class ImageGalerie extends Racine
     private $_Commentaires;
 
 
-    public function __construct($type, $idObject, $idPhoto)
+
+    public function __construct($idObject, $idPhoto)
     {
-        $this->_type = $type;
         $this->_idObject = $idObject;
         $this->_idPhoto = $idPhoto;
 
-        $this->_NavigationBarre = new NavigationBarre($this->_type, $this->_idObject, $this->_idPhoto);
-        $this->_LikeBarre = new LikeBarre($this->_type, $this->_idObject, $this->_idPhoto);
-        $this->_CommmentaireUser = new CommentaireUser($this->_type, $this->_idObject, $this->_idPhoto);
-        $this->_Commentaires = new Commentaires($this->_type, $this->_idObject, $this->_idPhoto);
+        $this->_elements = DB::table('image')->select('id', 'id_activite', 'image')->where('id_activite', $this->_idObject)->where('id', $this->_idPhoto)->first();
+
+
+        $this->_NavigationBarre = new NavigationBarre($this->_idObject, $this->_idPhoto);
+        $this->_LikeBarre = new LikeBarre($this->_idObject, $this->_idPhoto);
+        $this->_CommmentaireUser = new CommentaireUser($this->_idObject, $this->_idPhoto);
+        $this->_Commentaires = new Commentaires($this->_idObject, $this->_idPhoto);
     }
 
     public function echoObject()
     {
         echo '<div class="container">';
 
+        if(!Auth::guest()) {
+            $this->admin();
+        }
+
         $this->_NavigationBarre->echoNavigationBarre();
 
-        echo '<div class="imageGallerie"><img src="/php_project/public/images/boutique/'. $this->_idObject . '/' . $this->_idPhoto . '.jpg" id="mainImg"></div>';
+        echo '<div class="imageGallerie"><img src="/php_project/public/images/activite/' . $this->_idObject . '/galerie/'. $this->_elements->image . '" id="mainImg"></div>';
 
         $this->_LikeBarre->echoLikeBarre();
 
@@ -55,5 +62,19 @@ class ImageGalerie extends Racine
         $this->_Commentaires->echoCommentaires();
 
         echo '</div>';
+    }
+
+    private function admin()
+    {
+        if(DB::table('role_user')->select('user_id', 'role_id')->where('user_id', (Auth::user()->id))->first() != null) {
+            if ('1' == DB::table('role_user')->select('user_id', 'role_id')->where('user_id', (Auth::user()->id))->first()->role_id) {
+                echo '<div class="galleriProduit"><form method="post" action="' . $this->_idObject . '/delete">';
+                echo '<input type="hidden" name="_token" value="' . csrf_token() . '">';
+                echo '<input type="hidden" name="supprimer" value="activite">';
+                echo '<input type="submit" name="Activite" value="supprimer">';
+
+                echo '</form></div>';
+            }
+        }
     }
 }

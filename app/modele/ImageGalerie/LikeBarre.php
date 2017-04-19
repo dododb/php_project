@@ -8,19 +8,20 @@
  */
 
 namespace App\modele;
+use Illuminate\Support\Facades\DB;
 
 
 class LikeBarre
 {
-    private $_type;
     private $_idObject;
     private $_idPhoto;
+    private $_like;
 
-    public function __construct($type, $idObject, $idPhoto)
+    public function __construct($idObject, $idPhoto)
     {
-        $this->_type = $type;
         $this->_idObject = $idObject;
         $this->_idPhoto = $idPhoto;
+        $this->_like = DB::table('like')->select('image_id')->where('image_id', $this->_idObject)->count();
     }
 
     public function echoLikeBarre()
@@ -28,7 +29,7 @@ class LikeBarre
         echo '
         <table class="likePhoto">
             <td id="like">
-                X LIKES
+                ' . $this->_like . ' LIKES
             </td>
             <td id="heart" onclick="like();">
                 <img src="img/site/h2.png" class="heartImg" id="heartImg">
