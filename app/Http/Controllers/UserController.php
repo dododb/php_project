@@ -52,7 +52,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('display_name','id');
+        $roles = Role::lists('display_name','id');
         return view('users.create',compact('roles'));
     }
 
@@ -67,10 +67,12 @@ class UserController extends Controller
         $this->validate($request, [
             'nom' => 'required',
             'prenom' => 'required',
+            'avatar' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
             'roles' => 'required'
         ]);
+
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
@@ -80,8 +82,14 @@ class UserController extends Controller
             $user->attachRole($value);
         }
 
-        /*return redirect()->route('users.index')
-            ->with('success','User created successfully');*/
+        return redirect()->route('users.index')
+            ->with('success','User created successfully');
+
+
+
+
+
+
     }
 
     /**
@@ -105,8 +113,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::pluck('display_name','id');
-        $userRole = $user->roles->pluck('id','id')->toArray();
+        $roles = Role::lists('display_name','id');
+        $userRole = $user->roles->lists('id','id')->toArray();
 
         return view('users.edit',compact('user','roles','userRole'));
     }
@@ -123,6 +131,7 @@ class UserController extends Controller
         $this->validate($request, [
             'nom' => 'required',
             'prenom' => 'required',
+            'avatar' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm-password',
             'roles' => 'required'

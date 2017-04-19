@@ -14,21 +14,23 @@ class InterractionUserImage extends Migration
     public function up()
     {
         Schema::create('commentaire', function (Blueprint $table) {
-            $table->increments('id');
+            //$table->engine = 'InnoDB';
+            $table->increments('id')->unsigned();
             $table->string('commentaire');
-            $table->integer('image_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->integer('image_id')->length(10)->unsigned();
+            $table->integer('user_id')->length(10)->unsigned();
 
-            $table->foreign('image_id')->references('id')->on('image');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('image_id')->references('id')->on('image')->onUpdate('cascade')->onDelete('cascade');;
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');;
             $table->timestamps();
         });
-        Schema::create('like', function (Blueprint $table) {
-            $table->integer('image_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+        Schema::create('likes', function (Blueprint $table) {
+            //$table->engine = 'InnoDB';
+            $table->integer('image_id')->length(10)->unsigned();
+            $table->integer('user_id')->length(10)->unsigned();
 
-            $table->foreign('image_id')->references('id')->on('image');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('image_id')->references('id')->on('image')->onUpdate('cascade')->onDelete('cascade');;
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');;
             $table->primary(['user_id', 'image_id']);
         });
     }
