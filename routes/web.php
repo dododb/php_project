@@ -21,9 +21,10 @@ Route::get('/logout', [
 
 
 
+Route::get('article', 'ArticleController@getForm');
+Route::post('article', ['uses' => 'ArticleController@postForm', 'as' => 'storeArticle']);
 
-
-
+Route::resource('home', 'HomeController');
 
 Route::get('{type}', 'ListeController@getListe')->where('type', 'activite|boutique');
 
