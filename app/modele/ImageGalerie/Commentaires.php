@@ -34,7 +34,8 @@ class Commentaires
             echo '</div><p class="textCommentaire">';
             echo $commentaire->created_at . '   : <br>' . $commentaire->commentaire . '</p>';
             echo'</div>';
-            $this->admin($commentaire->id);
+            if(!Auth::guest()) $this->admin($commentaire->id);
+
         }
         echo '</div>';
     }
