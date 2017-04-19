@@ -23,7 +23,7 @@ class ElementListe
     {
         $this->_type = $type;
         $this->_idObject = $idObject;
-
+        $element = null;
         if($this->_type == 'activite')
         {
             $element = DB::table('activite')->select('id', 'nom_activite', 'prix', 'description_courte', 'photo_activite')->where('id', $this->_idObject)->first();

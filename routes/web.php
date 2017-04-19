@@ -75,6 +75,7 @@ Route::group(['middleware' => ['permission:admin']], function() { //if he is adm
     Route::post('activite/{idObject}/galerie/{idPhoto}/delete', 'PhotoGalerieController@destroy')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
 
     Route::post('boutique/soumettre/create', 'ProduitController@store');
+    Route::post('activite/soumettre/create', 'ActiviteController@store');
 
     Route::get('activite/soumettre', 'activiteController@getSoumettre');
     Route::get('boutique/soumettre', 'produitController@getSoumettre');
