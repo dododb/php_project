@@ -19,7 +19,6 @@ class Activite extends Racine
     private $_descriptionRapide;
     private $_descriptionLongue;
     private $_prix;
-    private $_lieu;
 
 
 
@@ -27,15 +26,13 @@ class Activite extends Racine
     {
         $this->_idObject = $idObject;
 
-        $element = DB::table('activite')->select('id', 'nom_activite', 'prix', 'description_courte', 'description_longue', 'photo_activite', 'lieu')->where('id', $this->_idObject)->first();
+        $element = DB::table('activite')->select('id', 'nom_activite', 'prix', 'description_courte', 'description_longue', 'photo_activite')->where('id', $this->_idObject)->first();
 
         $this->_pathImg = '/php_project/public/images/activite/' . $this->_idObject . '/'. $element->photo_activite;
         $this->_titre = $element->nom_activite;
         $this->_descriptionRapide = $element->description_courte;
         $this->_descriptionLongue = $element->description_longue;
         $this->_prix = $element->prix;
-
-        $this->_lieu = $element->lieu;
     }
 
     public function echoObject()
