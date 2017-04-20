@@ -44,10 +44,7 @@ Route::get('/Gallerie/{id}', array {
 'uses'=>
 });
 */
-/*  Route::get('/Accueil', function () {
-    // Validate the request...
-    return redirect('/accueil');
-});*/
+Route::get('/accueil', function(){return view('accueil');});
 Route::get('/home', 'HomeController@index');
 
 Auth::routes();
