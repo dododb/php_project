@@ -4,10 +4,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Users Management</h2>
+                <h2>Modération utilisateurs</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('users.create') }}"> Create New User</a>
+                <a class="btn btn-success" href="{{ route('users.create') }}"> Créer un nouvel utilisateur</a>
             </div>
         </div>
     </div>
@@ -19,7 +19,8 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
-            <th>Name</th>
+            <th>Nom</th>
+            <th>Prenom</th>
             <th>Email</th>
             <th>Roles</th>
             <th width="280px">Action</th>
@@ -28,6 +29,7 @@
             <tr>
                 <td>{{ ++$i }}</td>
                 <td>{{ $user->nom }}</td>
+                <td>{{ $user->prenom }}</td>
                 <td>{{ $user->email }}</td>
                 <td>
                     @if(!empty($user->roles))

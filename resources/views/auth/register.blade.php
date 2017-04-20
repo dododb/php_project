@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">Inscription</div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                             {{ csrf_field() }}
@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Adresse E-Mail</label>
+                            <label for="email" class="col-md-4 control-label">Adresse Mail</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
@@ -81,10 +81,7 @@
                             <label><input type="radio" name="cesi" value="Exia">Exia</label>
                         </div>
 
-                        <div class="form-group">
-                            {!! Form::label('avatar', 'Choisissez votre avatar') !!}
-                            {!! Form::file('avatar') !!}
-                        </div>
+
 
                         <div class="form-group">
                             {!! Form::submit('register', array( 'class'=>'btn btn-danger form-control' )) !!}
