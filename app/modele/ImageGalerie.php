@@ -53,7 +53,7 @@ class ImageGalerie extends Racine
 
         $this->_NavigationBarre->echoNavigationBarre();
 
-        echo '<div class="imageGallerie"><img src="/php_project/public/images/'. $this->_elements->image . '" id="mainImg"></div>';
+        echo '<div class="imageGallerie"><a download="' . $this->_elements->image . '" href="/php_project/public/images/'. $this->_elements->image . '" title="DL"><img src="/php_project/public/images/'. $this->_elements->image . '" id="mainImg"></a></div>';
 
         $this->_LikeBarre->echoLikeBarre();
 

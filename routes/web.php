@@ -44,6 +44,18 @@ Route::get('boutique/{idObject}', 'ProduitController@getProduit')->where('idObje
 Route::get('activite/{idObject}', 'ActiviteController@getActivite')->where('idObject', '[0-9]+');
 
 
+
+
+
+Route::get('activite/{idObject}/inscrits', function($idObject) { return view('Inscrit', ['idObject' => $idObject]);});
+
+
+
+
+
+
+
+
 Route::get('activite/{idObject}/galerie', 'GalerieController@getGalerie')->where('idObject', '[0-9]+');
 Route::get('activite/{idObject}/galerie/{idPhoto}', 'PhotoGalerieController@getPhoto')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
 Route::post('activite/{idObject}/galerie/{idPhoto}', 'PhotoGalerieController@postComment')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');

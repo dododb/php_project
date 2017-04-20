@@ -28,21 +28,28 @@
     </div>
 
     <div class="DescriptionComplete">
-        <form method="post" action="{{$object->idObject .'/voter'}}">
-            {!! Form::token() !!}
-            <select name="id" size="1">
+        @if(DB::table('tranche_horaire')->select('id')->where('activite_id', $object->idObject)->first() != null)
+            <?php $list = DB::table('tranche_horaire')->select('id', 'horaire', 'activite_id')->where('activite_id', $object->idObject)->get();?>
 
-                <?php $list = DB::table('tranche_horaire')->select('id', 'horaire', 'activite_id')->where('activite_id', $object->idObject)->get();?>
-                @foreach ($list as $vote)
-                    <option value="{{$vote->id}}"> {{$vote->horaire}};
-                @endforeach
+            @if(DB::table('tranche_horaire')->join('vote', 'vote.horaire_id', '=', 'tranche_horaire.id')->select('activite_id')->where('user_id', Auth::user()->id)->where('activite_id', $object->idObject)->first() == null)
+                <form method="post" action="{{$object->idObject .'/voter'}}">
+                    {!! Form::token() !!}
+                    <select name="id" size="1">
+
+                        @foreach ($list as $vote)
+                            <option value="{{$vote->id}}"> {{$vote->horaire}};
+                        @endforeach
 
 
 
-            </select>
-            <input type="submit" value="Voter"/>
-            </option>
-        </form>
+                    </select>
+                    <input type="submit" value="Voter"/>
+                    </option>
+                </form>
+            @else
+                Horraire voté : {{DB::table('tranche_horaire')->join('vote', 'vote.horaire_id', '=', 'tranche_horaire.id')->select('tranche_horaire.horaire')->where('user_id', Auth::user()->id)->where('activite_id', $object->idObject)->first()->horaire}}
+            @endif
+        @endif
     </div>
 
     @if(!Auth::guest())
@@ -69,6 +76,8 @@
     </div>
 
     <a href="{{$object->idObject . '\galerie'}}"><div class="galleriProduit">Galerie</div></a>
+    <a href="{{$object->idObject . '\inscrits'}}"><div class="galleriProduit">Inscrits</div></a>
+
     @permission('admin')
     @if(isset($success))
         <div class="alert alert-success"> {{$success}} </div>
