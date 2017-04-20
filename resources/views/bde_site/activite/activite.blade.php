@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
     <div class="produitPresentation">
         <table class="produitTable">
@@ -27,20 +28,42 @@
     </div>
 
     <div class="DescriptionComplete">
-        <form method="post" action="">
-            <select name="nom" size="1">
-                <option>lundi
-                <option>mardi
-                <option>mercredi
-                <option>jeudi
-                <option>vendredi
+        <form method="post" action="{{$object->idObject .'/voter'}}">
+            {!! Form::token() !!}
+            <select name="id" size="1">
+
+                <?php $list = DB::table('tranche_horaire')->select('id', 'horaire', 'activite_id')->where('activite_id', $object->idObject)->get();?>
+                @foreach ($list as $vote)
+                    <option value="{{$vote->id}}"> {{$vote->horaire}};
+                @endforeach
+
+
+
             </select>
-            <input type="submit" value="Voter/s'inscire"/>
+            <input type="submit" value="Voter"/>
             </option>
         </form>
     </div>
 
-
+    @if(!Auth::guest())
+        @if(DB::table('inscrit')->where('activite_id', $object->idObject)->where('user_id', Auth::user()->id)->first() == null)
+        <div class="galleriProduit">
+            <form method="post" action="{{$object->idObject .'/inscription'}}">
+                <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                <input type="hidden" name="supprimer" value="activite">
+                <input type="submit" name="inscription" value="S'inscrire">
+            </form>
+        </div>
+        @else
+            <div class="galleriProduit">
+                <form method="post" action="{{$object->idObject .'/desinscription'}}">
+                    <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                    <input type="hidden" name="supprimer" value="activite">
+                    <input type="submit" name="desinscription" value="Se désinscrire">
+                </form>
+            </div>
+        @endif
+    @endif
     <div class="DescriptionComplete">
         <div style="width: 860px; height: 450px;">{!! Mapper::render() !!}</div>
     </div>

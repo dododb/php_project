@@ -10,6 +10,8 @@ use App\Image;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Input;
 
+use Auth as Auth;
+
 class ActiviteController extends Controller
 {
     public function getActivite($object)
@@ -67,5 +69,23 @@ class ActiviteController extends Controller
         );
         //DB::table('article')->insert(['article' => $request->nom, 'prix' => $request->prix, 'description_courte' => $request->description_courte, 'description_longue' => $request->description_longue]);
         return redirect('/activite');
+    }
+
+    public function inscription(Request $request, $idObject)
+    {
+        DB::table('inscrit')->insert(['activite_id' => $idObject,'user_id' => Auth::user()->id]);
+        return redirect('activite/' . $idObject);
+    }
+
+    public function desinscription(Request $request, $idObject)
+    {
+        DB::table('inscrit')->where('user_id', Auth::user()->id)->delete();
+        return redirect('activite/' . $idObject);
+    }
+
+    public function voter(Request $request, $idObject)
+    {
+        DB::table('vote')->insert(['horaire_id' => $request['id'],'user_id' => Auth::user()->id]);
+        return redirect('activite/' . $idObject);
     }
 }

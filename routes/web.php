@@ -37,12 +37,18 @@ Route::get('boutique/soumettre/image', 'SoumettreController@getImageFormulaire')
 Route::post('boutique/soumettre', 'SoumettreController@setProduit');
 
 
+
+
 Route::get('boutique/{idObject}', 'ProduitController@getProduit')->where('idObject', '[0-9]+');
 
 Route::get('activite/{idObject}', 'ActiviteController@getActivite')->where('idObject', '[0-9]+');
+
+
 Route::get('activite/{idObject}/galerie', 'GalerieController@getGalerie')->where('idObject', '[0-9]+');
 Route::get('activite/{idObject}/galerie/{idPhoto}', 'PhotoGalerieController@getPhoto')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
 Route::post('activite/{idObject}/galerie/{idPhoto}', 'PhotoGalerieController@postComment')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
+
+
 
 
 Route::get('mentions-legales', function () {
@@ -60,7 +66,13 @@ Route::get('/home', 'HomeController@index');
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function() { // if he is authentificate
+    Route::post('activite/{idObject}/inscription', 'ActiviteController@inscription')->where('idObject', '[0-9]+');
+    Route::post('activite/{idObject}/desinscription', 'ActiviteController@desinscription')->where('idObject', '[0-9]+');
 
+    Route::post('activite/{idObject}/galerie/{idPhoto}/like', 'LikeController@like')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
+    Route::post('activite/{idObject}/galerie/{idPhoto}/unlike', 'LikeController@unlike')->where('idObject', '[0-9]+')->where('idPhoto', '[0-9]+');
+
+    Route::post('activite/{idObject}/voter', 'ActiviteController@voter')->where('idObject', '[0-9]+');
 });
 
 Route::group(['middleware' => ['permission:bde']], function() { //if he is bde member
