@@ -109,8 +109,8 @@ Route::group(['middleware' => ['permission:admin']], function() { //if he is adm
     Route::post('boutique/soumettre/create', 'ProduitController@store');
     Route::post('activite/soumettre/create', 'ActiviteController@store');
 
-    Route::get('activite/soumettre', 'activiteController@getSoumettre');
-    Route::get('boutique/soumettre', 'produitController@getSoumettre');
+    Route::get('activite/soumettre', 'ActiviteController@getSoumettre');
+    Route::get('boutique/soumettre', 'ProduitController@getSoumettre');
 });
 
 
