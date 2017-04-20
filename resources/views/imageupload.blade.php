@@ -13,7 +13,7 @@
 
 </head>
 <body>
-    <h1 class="well well-lg">Upload Image</h1>
+    <h1 class="well well-lg">Enregistrer une image</h1>
     <div class="container">
 @if(isset($success))
     <div class="alert alert-success"> {{$success}} </div>
