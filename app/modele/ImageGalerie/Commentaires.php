@@ -48,8 +48,7 @@ class Commentaires
                 echo '<input type="hidden" name="_token" value="' . csrf_token() . '">';
                 echo '<input type="hidden" name= "supprimer" value="' . $id_commentaire . '">';
                 echo '<input type="submit" name="" value="Supprimer">';
-
-        echo '</form>';
+                echo '</form>';
             }
         }
     }

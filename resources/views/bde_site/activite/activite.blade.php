@@ -73,7 +73,7 @@
 
         <div class="galleriProduit">
             <form method="post" action="{{$object->idObject . '/delete'}}">
-                <input type="hidden" name="_token" value="' . csrf_token() . '">
+                <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <input type="submit" name="deleteActivite" value="Supprimer">
             </form>
         </div>
