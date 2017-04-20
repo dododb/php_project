@@ -53,7 +53,7 @@ class ImageGalerie extends Racine
 
         $this->_NavigationBarre->echoNavigationBarre();
 
-        echo '<div class="imageGallerie"><img src="/php_project/public/images/'. $this->_elements->image . '" id="mainImg"></div>';
+        echo '<div class="imageGallerie"><a download="' . $this->_elements->image . '" href="/php_project/public/images/'. $this->_elements->image . '" title="DL"><img src="/php_project/public/images/'. $this->_elements->image . '" id="mainImg"></a></div>';
 
         $this->_LikeBarre->echoLikeBarre();
 
@@ -68,7 +68,7 @@ class ImageGalerie extends Racine
     {
         if(DB::table('role_user')->select('user_id', 'role_id')->where('user_id', (Auth::user()->id))->first() != null) {
             if ('1' == DB::table('role_user')->select('user_id', 'role_id')->where('user_id', (Auth::user()->id))->first()->role_id) {
-                echo '<div class="galleriProduit"><form method="post" action="' . $this->_idObject . '/delete">';
+                echo '<div class="galleriProduit"><form method="post" action="' . $this->_idPhoto . '/delete">';
                 echo '<input type="hidden" name="_token" value="' . csrf_token() . '">';
                 echo '<input type="hidden" name="supprimer" value="activite">';
                 echo '<input type="submit" name="Activite" value="supprimer">';

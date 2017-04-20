@@ -41,7 +41,8 @@ class PhotoGalerieController extends Controller
         }
         else
         {
-            DB::table('activite')->where('id', $idPhoto)->delete();
+            echo 'caca';
+            DB::table('image')->where('id', $idPhoto)->delete();
             return redirect('activite/' . $idObject . '/galerie');
         }
     }
