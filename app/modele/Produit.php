@@ -28,7 +28,7 @@ class Produit extends Racine
         $element = DB::table('article')->select('id', 'article', 'prix', 'description_longue', 'description_courte' , 'image')->where('id', $this->_idObject)->first();
 
 
-        $this->_pathImg = '/php_project/public/images/boutique/' . $this->_idObject . '/'. $element->image;
+        $this->_pathImg = '/php_project/public/images/boutique/' . $element->image;
         $this->_titre = $element->article;
         $this->_descriptionRapide = $element->description_courte;
         $this->_descriptionLongue = $element->description_longue;
@@ -60,7 +60,8 @@ class Produit extends Racine
 
         echo '</p></div>';
 
-        $this->admin();
+        if(!Auth::guest()){
+        $this->admin();}
     }
 
     private function admin()

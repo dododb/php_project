@@ -44,7 +44,7 @@ Route::get('/Gallerie/{id}', array {
 'uses'=>
 });
 */
-Route::get('/accueil', function(){return view('accueil');});
+Route::get('/accueil', function(){return view('Accueil');});
 Route::get('/home', 'HomeController@index');
 
 Auth::routes();
